@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import UserList from "./components/UserList";
 import UserCrafts from "./components/UserCrafts";
 import SingleUser from "./components/SingleUser";
+import CraftComment from "./components/CraftComment";
 import "./App.css";
 
 
@@ -18,6 +19,7 @@ class App extends Component {
                   <Route exact path="/api/users" component={UserList}/>
                   <Route exact path="/api/users/:user_id/crafts" component={UserCrafts}/>
                   <Route exact path="/api/users/:user_id" component={SingleUser}/>
+                  <Route exact path="/api/users/:user_id/crafts/:craft_id/comments" component={CraftComment}/>
                 </div>
                 </Switch>
                 </div>
