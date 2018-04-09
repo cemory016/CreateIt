@@ -27,7 +27,7 @@ betty = User.create!(firstName: 'Betty', lastName: 'Boop', email: 'bboop@gmail.c
 # t.string :link_url
 
 yarnBalls = Craft.create!(title: 'yarn balls', photo_url: 'https://pgeveryday-com.secure.footprint.net/Assets/Modules/Editorial/Article/Images/diy-yarn-balls-1-size-3.jpg', link_url: 'https://www.pgeveryday.com/home/crafts/article/diy-yarn-balls', user_id: billy.id)
-puts yarnBalls
+
 fooseBallTable = Craft.create!(title: 'fooseBallTable', photo_url: 'https://www.momooze.com/wp-content/uploads/2016/09/0be347eac5dfc5be18e2311088201da8.jpg', link_url: 'https://www.momooze.com/kids-creative-crafts/8/', user_id: betty.id)
 
 woodPhotoTrans = Craft.create!(title: 'wood transfer photo', photo_url: 'https://i2.wp.com/parentalperspective.com/wp-content/uploads/2015/12/Wood-Slice-Photo-Transfer-Silhouette-Tattoo-Paper-8.jpg?w=700', link_url: 'http://parentalperspective.com/diy-wood-slice-photo-transfer/', user_id: bob.id)
@@ -43,19 +43,19 @@ flowerLetters = Craft.create!(title: 'Flower Letters', photo_url: 'https://2.bp.
 # # COMMENT
 # t.string :title
 # t.string :text
-# belongs to crafts_id: craftDefinedAs.id
+# belongs to crafts_id
 
 
 yarn = yarnBalls.comments.create!(title: 'my first craft YARN', text: "I love to craft! this is a great app! thanks for whomeever thought of this idea...now maybe I wont get overwhelmed with crafting ideas.")
 
-# Comment.create!(title: 'my second craft FOOSE', text: "I love to craft! this is a great app! thanks for whomeever thought of this idea...now maybe I wont get overwhelmed with crafting ideas.", crafts_id: fooseBallTable.id)
+foose = fooseBallTable.comments.create!(title: 'my second craft FOOSE', text: "I love to craft! this is a great app! thanks for whomeever thought of this idea...now maybe I wont get overwhelmed with crafting ideas.")
 
-# Comment.create!(title: 'my third craft woodPhotoTrans', text: "I love to craft! this is a great app! thanks for whomeever thought of this idea...now maybe I wont get overwhelmed with crafting ideas.", crafts_id: woodPhotoTrans.id)
+wood = woodPhotoTrans.comments.create!(title: 'my third craft woodPhotoTrans', text: "I love to craft! this is a great app! thanks for whomeever thought of this idea...now maybe I wont get overwhelmed with crafting ideas.")
 
-# Comment.create!(title: 'my fourth craft galaxyShoes', text: "I love to craft! this is a great app! thanks for whomeever thought of this idea...now maybe I wont get overwhelmed with crafting ideas.", crafts_id: galaxyShoes.id)
+galaxy = galaxyShoes.comments.create!(title: 'my fourth craft galaxyShoes', text: "I love to craft! this is a great app! thanks for whomeever thought of this idea...now maybe I wont get overwhelmed with crafting ideas.")
 
-# Comment.create!(title: 'my fith craft StorageBins', text: "I love to craft! this is a great app! thanks for whomeever thought of this idea...now maybe I wont get overwhelmed with crafting ideas.", crafts_id: storageBins.id)
+storage = storageBins.comments.create!(title: 'my fith craft StorageBins', text: "I love to craft! this is a great app! thanks for whomeever thought of this idea...now maybe I wont get overwhelmed with crafting ideas.")
 
-# Comment.create!(title: 'my sixth craft Slime', text: "I love to craft! this is a great app! thanks for whomeever thought of this idea...now maybe I wont get overwhelmed with crafting ideas.", crafts_id: yarnBalls.id)
+slime = slime.comments.create!(title: 'my sixth craft Slime', text: "I love to craft! this is a great app! thanks for whomeever thought of this idea...now maybe I wont get overwhelmed with crafting ideas.")
 
-# Comment.create!(title: 'my seventh craft flowerLetters', text: "I love to craft! this is a great app! thanks for whomeever thought of this idea...now maybe I wont get overwhelmed with crafting ideas.", crafts_id: flowerLetters.id)
+flowers = flowerLetters.comments.create!(title: 'my seventh craft flowerLetters', text: "I love to craft! this is a great app! thanks for whomeever thought of this idea...now maybe I wont get overwhelmed with crafting ideas.")
