@@ -1,8 +1,11 @@
-// App.js
 import React, {Component} from "react";
 import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
 import NavBar from "./components/NavBar";
+import UserList from "./components/UserList";
+import UserCrafts from "./components/UserCrafts";
+import SingleUser from "./components/SingleUser";
 import "./App.css";
+
 
 class App extends Component {
     render() {
@@ -12,17 +15,9 @@ class App extends Component {
               <NavBar/>
               <Switch>
                 <div className="App">
-
-                    <div>
-                        <h1>Craft It!</h1>
-                        <div>
-                            <div><Link to="/">Crafts</Link></div>
-                        </div>
-                    </div>
-
-                    {/* <Route exact path="/" component={Craft}/>
-                    <Route path="/artist/:id" component={User}/> */}
-
+                  <Route exact path="/api/users" component={UserList}/>
+                  <Route exact path="/api/users/:user_id/crafts" component={UserCrafts}/>
+                  <Route exact path="/api/users/:user_id" component={SingleUser}/>
                 </div>
                 </Switch>
                 </div>

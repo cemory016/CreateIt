@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const NavStyle = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 100vw;
   padding: 15px 2.5vw;
@@ -16,7 +16,9 @@ const NavBar = () => {
     <NavStyle>
       <h1>Craft It!</h1>
       <div>
-        <div><Link to="/">Crafts</Link></div>
+        <div><Link to="/">Home</Link></div>
+        <div><Link to="/">Sign Up</Link></div>
+        <div><Link to="/">Log In</Link></div>
       </div>
     </NavStyle>
   )
