@@ -14,7 +14,9 @@ const NavStyle = styled.div`
 const NavBar = () => {
   return (
     <NavStyle>
-      <h1>Craft It!</h1>
+      <div>
+      <h1><Link to="/">Craft It!</Link></h1>
+      </div>
       <div>
         <div><Link to="/">Home</Link></div>
         <div><Link to="/">Sign Up</Link></div>

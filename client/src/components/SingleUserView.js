@@ -26,7 +26,7 @@ class SingleUserView extends Component {
         try {
             const userResponse = await axios.get(`/api/users/${userId}`)
        
-            const craftResponse = await axios.get('/api/users/${userId}/crafts')
+            const craftResponse = await axios.get(`/api/users/${userId}/crafts`)
     
             await this.setState({
                 user: userResponse.data,
