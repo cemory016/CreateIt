@@ -5,26 +5,26 @@ class Api::CommentsController < ApplicationController
         render json: @comments
     end
 
-    def create
-        @comment = Comment.create!(comment_param)
-        render json: @comment
-    end
+    # def create
+    #     @comment = Comment.create!(comment_param)
+    #     render json: @comment
+    # end
 
-    def show
-        @comment = Comment.find(params[:id])
-        render json: @comment
-    end
+    # def show
+    #     @comment = Comment.find(params[:id])
+    #     render json: @comment
+    # end
 
-    def update
-        @comment = Comment.fins(params[:id])
-        @comment.update!(commen_params)
-        render json: @comment
-    end
+    # def update
+    #     @comment = Comment.fins(params[:id])
+    #     @comment.update!(commen_params)
+    #     render json: @comment
+    # end
 
-    def destroy
-        @comment = Comment.find(params[:id]).delete
-        render status: :ok
-    end
+    # def destroy
+    #     @comment = Comment.find(params[:id]).delete
+    #     render status: :ok
+    # end
 
     private
 
