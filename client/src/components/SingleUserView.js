@@ -7,21 +7,20 @@ class SingleUserView extends Component {
         this.state = {
             user: {
                 firstName: "",
-                // lastName: {},
-                // email: {},
-                // photo_url: {},
-                // userName: {},
+                lastName: "",
+                email: "",
+                photo_url: "",
+                userName: "",
             },
             crafts: [],
         };
     }
 
     componentWillMount() {
-        const userId = this.props.match.params.user_id;
+        const userId = this.props.match.params.id;
         this.getUserAndCraftsData(userId);
-      
+        console.log("error")
     }
-
     getUserAndCraftsData = async (userId) => {
         try {
             const userResponse = await axios.get(`/api/users/${userId}`)
@@ -30,7 +29,7 @@ class SingleUserView extends Component {
     
             await this.setState({
                 user: userResponse.data,
-                crafts: craftsResponse.data
+                craft: craftsResponse.data
             });
            
         }
@@ -45,11 +44,13 @@ class SingleUserView extends Component {
     render() {
         if (this.state.error){
             return <div>{this.state.error}</div>
+            
         
         }
         return (
             <div>
                 <h1>I am a single user and this is my view</h1>
+                
                 <h1>{this.state.user.firstName}</h1>
                 <h2>{this.state.user.email}</h2>
                 {this.state.crafts.map(craft => (

@@ -10,7 +10,7 @@ class Api::UsersController < ApplicationController
     end
 
     def show
-        @user = User.find(params[:user_id])
+        @user = User.find(params[:id])
         @crafts = @user.crafts
         render json: {
             user: @user,
@@ -19,13 +19,13 @@ class Api::UsersController < ApplicationController
     end
 
     def update
-        @user = User.find(params[:user_id])
+        @user = User.find(params[:id])
         @user.update!(user_params)
         render json: @user
     end
 
     def destroy
-        @user = User.find(params[:user_id]).destroy
+        @user = User.find(params[:id]).destroy
         render status: :ok
     end
 

@@ -1,7 +1,7 @@
 class Api::CraftsController < ApplicationController
     def index
         @user = User.find(params[:user_id])
-        @crafts = user.crafts
+        @crafts = @user.crafts
         render json: {
         crafts: @crafts
     }
@@ -15,12 +15,12 @@ class Api::CraftsController < ApplicationController
     #     }
     # end
 
-    # def show
-    #     @craft = Craft.find(params[:id])
-    #     render json: {
-    #         craft: @craft
-    #     }
-    # end
+    def show
+        @craft = Craft.find(params[:id])
+        render json: {
+            craft: @craft
+        }
+    end
 
     # def update
     #     @user = User.find(params[:user_id])
