@@ -11,11 +11,12 @@ class Api::UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
-        @crafts = @user.crafts
-        render json: {
-            user: @user,
-            crafts: @crafts
-        }
+        # @crafts = @user.crafts
+        # render json: {
+        #     user: @user,
+        #     crafts: @crafts
+        # }
+        render json: @user
     end
 
     def update

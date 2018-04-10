@@ -6,10 +6,10 @@ class SingleUserView extends Component {
         super();
         this.state = {
             user: {
-                firstName: "",
-                lastName: "",
-                email: "",
-                photo_url: "",
+                // firstName: "",
+                // lastName: "",
+                // email: "",
+                // photo_url: "",
                 userName: "",
             },
             crafts: [],
@@ -25,11 +25,11 @@ class SingleUserView extends Component {
         try {
             const userResponse = await axios.get(`/api/users/${userId}`)
        
-            const craftsResponse = await axios.get(`/api/users/${userId}/crafts`)
+            // const craftsResponse = await axios.get(`/api/users/${userId}/crafts`)
     
             await this.setState({
                 user: userResponse.data,
-                craft: craftsResponse.data
+                // craft: craftsResponse.data
             });
            
         }
@@ -53,11 +53,11 @@ class SingleUserView extends Component {
                 
                 <h1>{this.state.user.firstName}</h1>
                 <h2>{this.state.user.email}</h2>
-                {this.state.crafts.map(craft => (
+                {/* {this.state.crafts.map(craft => (
                     <div key={craft.id}>
                         <h4>{craft.title}</h4>
                     </div>
-                ))}
+                ))} */}
                 
             </div>
            
