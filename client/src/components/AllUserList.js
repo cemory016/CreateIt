@@ -38,7 +38,7 @@ class AllUserList extends Component {
                 <h1>All Users</h1>
                 {this.state.users.map(user => (
                     <div key={user.id}>
-                        <Link to={`/user/${user.id}`} >{user.userName}</Link>
+                        <Link to={`/users/${user.id}`} >{user.userName}</Link>
                     </div>
                 ))}
             </div>
