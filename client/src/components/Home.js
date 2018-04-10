@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Button } from "semantic-ui-react";
+import { Link } from 'react-router-dom'
 
 const LandingImage = styled.div`
   background-image: url("https://images.unsplash.com/photo-1509664158680-07c5032b51e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=442ccbf5c1e7e58e0b9f1ed3e494fee8&auto=format&fit=crop&w=1950&q=80");
@@ -21,10 +22,10 @@ const HomeContainer = styled.div`
 const LandingText = styled.div`
   margin: auto;
   text-align: center;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  color: #EAEAEA;
-  border-radius: 10px;
+  background: rgba(10, 15, 5, 0.2);
+  padding: 100px;
+  color: #9A2C3E;
+  border-radius: 3px;
   LandingText.h1 {
     font-size: 40px;
   }
@@ -56,16 +57,18 @@ class Home extends Component {
             </p>
             
             <ButtonPadding>
-              <Button type="submit">Sign Up</Button>
+            
+              <Button type="submit"><Link to="/">Sign Up</Link></Button>
             </ButtonPadding>
             <ButtonPadding>
-              <Button type="submit">Log In</Button>
+            <Button type="submit"><Link to="/users">Log In</Link></Button>
             </ButtonPadding>
           </LandingText>
         </LandingImage>
 
         <BodyContent>
           <h1>This is my body content</h1>
+          <h4>put some stuff about crafting down here</h4>
         </BodyContent>
       </HomeContainer>
     );
