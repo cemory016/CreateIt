@@ -1,37 +1,36 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 
 class SingleUserView extends Component {
     constructor() {
         super();
         this.state = {
-            user: {
-                // firstName: "",
-                // lastName: "",
-                // email: "",
-                // photo_url: "",
-                userName: "",
-            },
+            user: { },
             crafts: [],
         };
     }
 
     componentWillMount() {
         const userId = this.props.match.params.id;
-        this.getUserAndCraftsData(userId);
-        console.log("error")
+        const craftId = this.props.match.params.id;
+        this.getUserAndCraftsData(userId, craftId);
     }
     getUserAndCraftsData = async (userId) => {
         try {
-            const userResponse = await axios.get(`/api/users/${userId}`)
-       
-            // const craftsResponse = await axios.get(`/api/users/${userId}/crafts`)
-    
+            const userResponse = await axios.get(`/api/users/${userId}`);
+            
+            const craftsResponse = await axios.get(`/api/users/${userId}/crafts`);
+            
+            
             await this.setState({
                 user: userResponse.data,
                 // craft: craftsResponse.data
+                crafts: craftsResponse.data.crafts
             });
-           
+            
+            // debugger;
+            console.log(this.state.crafts)
         }
         catch (error) {
             console.log(error)
@@ -42,6 +41,7 @@ class SingleUserView extends Component {
     }
 
     render() {
+        const userId = this.props.match.params.id;
         if (this.state.error){
             return <div>{this.state.error}</div>
             
@@ -49,16 +49,17 @@ class SingleUserView extends Component {
         }
         return (
             <div>
+                
                 <h1>I am a single user and this is my view</h1>
                 
                 <h1>{this.state.user.firstName}</h1>
                 <h2>{this.state.user.email}</h2>
-                {/* {this.state.crafts.map(craft => (
+                {/* {this.state.craft.craft.map(craft => (
                     <div key={craft.id}>
                         <h4>{craft.title}</h4>
                     </div>
                 ))} */}
-                
+                <Link to="/users/${userId}/crafts/${crafts.id}">Crafts</Link>
             </div>
            
         );
