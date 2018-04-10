@@ -1,31 +1,3 @@
-// import React, {Component} from 'react';
-// import axios from 'axios';
-// import AllUserList from './AllUserList';
-
-// class SingleUserView extends Component {
-//     constructor() {
-//         super();
-//         this.state = {
-//             firstName: {},
-//             lastName: {},
-//             email: {},
-//             photo_url: {},
-//             userName: {}
-//         };
-//     }
-//     render() {
-//         return (
-//             <div>
-//                 <img src={this.state.user.photo_url} alt=""/>
-//                 <h1>{this.state.user.name}</h1>
-//             </div>
-//         );
-//     }
-// }
-
-// export default SingleUserView;
-
-
 import React, {Component} from 'react';
 import axios from 'axios';
 
@@ -34,7 +6,7 @@ class SingleUserView extends Component {
         super();
         this.state = {
             user: {
-                // firstName: {},
+                firstName: "",
                 // lastName: {},
                 // email: {},
                 // photo_url: {},
@@ -45,16 +17,16 @@ class SingleUserView extends Component {
     }
 
     componentWillMount() {
-        const userId = this.props.match.params.id;
+        const userId = this.props.match.params.user_id;
         this.fetchUserAndCraftsData(userId)
       
     }
 
     fetchUserAndCraftsData = async (userId) => {
         try {
-            const userResponse = await axios.get(`/api/users/${userId}`)
+            const userResponse = await axios.get('/api/users/${userId}')
        
-            const craftsResponse = await axios.get(`/api/users/${userId}/crafts`)
+            const craftsResponse = await axios.get('/api/users/${userId}/crafts')
     
             await this.setState({
                 user: userResponse.data,
@@ -78,14 +50,14 @@ class SingleUserView extends Component {
         return (
             <div>
                 <h1>I am a single user and this is my view</h1>
-                {/* <h1>{this.state.user.firstName}</h1>
+                <h1>{this.state.user.firstName}</h1>
                 <h2>{this.state.user.email}</h2>
-                {this.state.crafts.map(craft => (
+                {/* {this.state.crafts.map(craft => (
                     <div key={craft.id}>
                         <h4>{craft.title}</h4>
                     </div>
-                ))}
-                 */}
+                ))} */}
+                
             </div>
            
         );

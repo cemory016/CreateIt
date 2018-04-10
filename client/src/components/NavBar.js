@@ -8,7 +8,7 @@ const NavStyle = styled.div`
   align-items: center;
   width: 100vw;
   padding: 15px 2.5vw;
-  background: palevioletred;
+  border-bottom: 10px solid black; 
 `
 
 const NavBar = () => {
