@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
 import NavBar from "./components/NavBar";
-import UserList from "./components/UserList";
+import AllUserList from "./components/AllUserList";
 import UserCrafts from "./components/UserCrafts";
-import SingleUser from "./components/SingleUser";
+import SingleUserView from "./components/SingleUserView";
 import CraftComment from "./components/CraftComment";
 import "./App.css";
 
@@ -16,9 +16,10 @@ class App extends Component {
               <NavBar/>
               <Switch>
                 <div className="App">
-                  <Route exact path="/api/users" component={UserList}/>
+                <h1>Hello World</h1>
+                  <Route exact path="/api/users" component={AllUserList}/>
+                  <Route exact path="/api/users/:user_id" component={SingleUserView}/>
                   <Route exact path="/api/users/:user_id/crafts" component={UserCrafts}/>
-                  <Route exact path="/api/users/:user_id" component={SingleUser}/>
                   <Route exact path="/api/users/:user_id/crafts/:craft_id/comments" component={CraftComment}/>
                 </div>
                 </Switch>
