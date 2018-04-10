@@ -29,7 +29,6 @@ class Api::CraftsController < ApplicationController
         render json {
             craft: @craft
         }
-
         render json: @craft
     end
 
