@@ -17,10 +17,10 @@ class App extends Component {
               <Switch>
                 <div className="App">
                 <h1>Hello World</h1>
-                  <Route exact path="/api/users" component={AllUserList}/>
-                  <Route exact path="/api/users/:user_id" component={SingleUserView}/>
-                  <Route exact path="/api/users/:user_id/crafts" component={UserCrafts}/>
-                  <Route exact path="/api/users/:user_id/crafts/:craft_id/comments" component={CraftComment}/>
+                  <Route exact path="/users" component={AllUserList}/>
+                  <Route exact path="/users/:user_id" component={SingleUserView}/>
+                  <Route exact path="/users/:user_id/crafts" component={UserCrafts}/>
+                  <Route exact path="/users/:user_id/crafts/:craft_id/comments" component={CraftComment}/>
                 </div>
                 </Switch>
                 </div>
