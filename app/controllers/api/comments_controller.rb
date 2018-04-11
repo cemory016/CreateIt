@@ -8,10 +8,20 @@ class Api::CommentsController < ApplicationController
     }
     end
 
-    # def create
-    #     @comment = Comment.create!(comment_param)
-    #     render json: @comment
-    # end
+    def create
+        # @user = User.find(params[:user_id])
+        @craft = Craft.find(params[:craft_id])
+
+        @comment = Comment.new(comment_params)
+
+        # @user.comments << @comment
+        @craft.comments << @comment
+
+        # @user.save
+        @craft.save
+
+        render json: @comment
+    end
 
     def show
         @comment = Comment.find(params[:id])
@@ -26,10 +36,10 @@ class Api::CommentsController < ApplicationController
     #     render json: @comment
     # end
 
-    # def destroy
-    #     @comment = Comment.find(params[:id]).delete
-    #     render status: :ok
-    # end
+    def destroy
+        @comment = Comment.find(params[:id]).delete
+        render status: :ok
+    end
 
     private
 
