@@ -25,7 +25,6 @@ class SingleUserView extends Component {
             
             await this.setState({
                 user: userResponse.data,
-                // craft: craftsResponse.data
                 crafts: craftsResponse.data.crafts
             });
             
@@ -54,12 +53,12 @@ class SingleUserView extends Component {
                 
                 <h1>{this.state.user.firstName}</h1>
                 <h2>{this.state.user.email}</h2>
-                {/* {this.state.craft.craft.map(craft => (
+                {this.state.crafts.map(craft => (
                     <div key={craft.id}>
                         <h4>{craft.title}</h4>
                     </div>
-                ))} */}
-                <Link to="/users/${userId}/crafts/${crafts.id}">Crafts</Link>
+                ))}
+                <Link to="/users/${userId}/crafts/${crafts}">Crafts</Link>
             </div>
            
         );
