@@ -56,7 +56,10 @@ class UserSingleCraftAndComments extends Component {
                 <h4>{this.state.craft.title}</h4>
                 <Image><img src={this.state.craft.photo_url} alt="" /> </Image>
             
-                <CraftComment />
+                <CraftComment 
+                    userId={this.props.match.params.user_id}
+                    craftId={this.props.match.params.id}
+                    />
                       
                 
             </div>

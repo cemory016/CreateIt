@@ -13,19 +13,18 @@ class CraftComment extends Component {
         };
     }
     componentWillMount() {
-        const userId = this.props.match.params.user_id;
-        const craftId = this.props.match.params.craft_id;
-        const commentId = this.props.match.params.id
-        this.getUserAndCraftsAndCommentsData(userId, craftId, commentId);
+        const userId = this.props.userId;
+        const craftId = this.props.craftId;
+        this.getUserAndCraftsAndCommentsData(userId, craftId);
     }
 
-    getUserAndCraftsAndCommentsData = async (userId, craftId, commentId) => {
+    getUserAndCraftsAndCommentsData = async (userId, craftId) => {
         try {
             const userResponse = await axios.get(`/api/users/${userId}`)
        
             const craftsResponse = await axios.get(`/api/users/${userId}/crafts/${craftId}`)
 
-            const commentsResponse = await axios.get(`/api/users/${userId}/crafts/${craftId}/comments/${commentId}`)
+            const commentsResponse = await axios.get(`/api/users/${userId}/crafts/${craftId}/comments`)
             console.log(commentsResponse.data)
             this.setState({
                 user: userResponse.data,
@@ -42,13 +41,10 @@ class CraftComment extends Component {
 
     }
     render() {
-        const userId = this.props.match.params.user_id;
-        const craftId = this.props.match.params.craft_id;
-        const commentId = this.props.match.params.id
  
-        if (this.state.error){
-            return <div>{this.state.error}</div>   
-        }
+        // if (this.state.error){
+        //     return <div>{this.state.error}</div>   
+        // }
 
         return (
             <div>
@@ -63,5 +59,6 @@ class CraftComment extends Component {
         );
     }
 }
+
 
 export default CraftComment
