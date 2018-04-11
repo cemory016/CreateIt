@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 import { Image } from 'semantic-ui-react'
 
-class SingleUserView extends Component {
+class SingleUserProfile extends Component {
     constructor() {
         super();
         this.state = {
@@ -50,7 +50,7 @@ class SingleUserView extends Component {
         return (
             <div>
                 
-                <h1>I am a single user and this is my view</h1>
+                <h1>I am a single user and this is my profile</h1>
                 
                 <h1>{this.state.user.firstName}</h1>
                 <h2>{this.state.user.email}</h2>
@@ -75,4 +75,4 @@ class SingleUserView extends Component {
 }
 
 
-export default SingleUserView;
+export default SingleUserProfile;

@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import AllUserList from "./components/AllUserList";
 import UserSingleCraftAndComments from "./components/UserSingleCraftAndComments";
-import SingleUserView from "./components/SingleUserView";
+import SingleUserProfile from "./components/SingleUserProfile";
 import CraftComment from "./components/CraftComment";
 import "./App.css";
 
@@ -19,7 +19,7 @@ class App extends Component {
                 <div className="App">
                   <Route exact path="/" component={Home}/>
                   <Route exact path="/users" component={AllUserList}/>
-                  <Route exact path="/users/:id" component={SingleUserView}/>
+                  <Route exact path="/users/:id" component={SingleUserProfile}/>
                   <Route exact path="/users/:user_id/crafts/:id" component={UserSingleCraftAndComments}/>
                 </div>
                 </Switch>

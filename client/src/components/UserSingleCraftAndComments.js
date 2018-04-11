@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
 import { Image } from 'semantic-ui-react'
+import CraftComment from './CraftComment'
 
 class UserSingleCraftAndComments extends Component {
     constructor() {
@@ -51,9 +52,11 @@ class UserSingleCraftAndComments extends Component {
                 <h1>This is a Users Single Craft View</h1> 
                 <h3>User will be able to edit and rate crafts from here</h3> 
                 <h4>as well as link to the crafts directions</h4>
-               
+                <br />
+                <h4>{this.state.craft.title}</h4>
+                <Image><img src={this.state.craft.photo_url} alt="" /> </Image>
             
-                       <h4>{this.state.craft.title}</h4>
+                <CraftComment />
                       
                 
             </div>
