@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
+import { Image } from 'semantic-ui-react'
 
 class SingleUserView extends Component {
     constructor() {
@@ -53,13 +54,19 @@ class SingleUserView extends Component {
                 
                 <h1>{this.state.user.firstName}</h1>
                 <h2>{this.state.user.email}</h2>
+
+                
+
                 {this.state.crafts.map(craft => (
                     <div key={craft.id}>
+                    <Link to={`/users/${userId}/crafts/${craft}`}>
+                    <Image>
                        <img src={craft.photo_url} alt="craft image" />
+                       </Image>
                        <h4>{craft.title}</h4>
+                       </Link>
                     </div>
                 ))}
-                <Link to="/users/${userId}/crafts/${crafts}">Crafts</Link>
             </div>
            
         );
