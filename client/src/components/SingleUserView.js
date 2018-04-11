@@ -55,7 +55,8 @@ class SingleUserView extends Component {
                 <h2>{this.state.user.email}</h2>
                 {this.state.crafts.map(craft => (
                     <div key={craft.id}>
-                        <h4>{craft.title}</h4>
+                       <img src={craft.photo_url} alt="craft image" />
+                       <h4>{craft.title}</h4>
                     </div>
                 ))}
                 <Link to="/users/${userId}/crafts/${crafts}">Crafts</Link>
