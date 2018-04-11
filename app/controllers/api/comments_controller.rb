@@ -1,6 +1,6 @@
 class Api::CommentsController < ApplicationController
     def index
-        craft = Craft.find(params[:craft_id])
+        @craft = Craft.find(params[:craft_id])
         @comments = craft.comments
         render json: @comments
     end

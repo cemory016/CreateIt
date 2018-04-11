@@ -1,29 +1,32 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
+import { Image } from 'semantic-ui-react'
 
-class UserCrafts extends Component {
+class UserSingleCraftAndComments extends Component {
     constructor() {
         super();
         this.state = {
             user: {},
-            crafts: [],
+            craft: {},
         };
     }
 
     componentWillMount() {
         const userId = this.props.match.params.user_id;
-        this.getUserAndCraftsData(userId);
-        console.log("error")
+        const craftId = this.props.match.params.id;
+        this.getUserAndCraftsData(userId, craftId);
     }
-    getUserAndCraftsData = async (userId) => {
+
+    getUserAndCraftsData = async (userId, craftId) => {
         try {
             const userResponse = await axios.get(`/api/users/${userId}`)
        
-            const craftsResponse = await axios.get(`/api/users/${userId}/crafts`)
-    
-            await this.setState({
+            const craftsResponse = await axios.get(`/api/users/${userId}/crafts/${craftId}`)
+            console.log(craftsResponse.data)
+            this.setState({
                 user: userResponse.data,
-                craft: craftsResponse.data
+                craft: craftsResponse.data.craft
             });
            
         }
@@ -36,6 +39,8 @@ class UserCrafts extends Component {
     }
 
     render() {
+        const userId = this.props.match.params.id;
+        const craftId = this.props.match.params.id
         if (this.state.error){
             return <div>{this.state.error}</div>
             
@@ -46,6 +51,11 @@ class UserCrafts extends Component {
                 <h1>This is a Users Single Craft View</h1> 
                 <h3>User will be able to edit and rate crafts from here</h3> 
                 <h4>as well as link to the crafts directions</h4>
+               
+            
+                       <h4>{this.state.craft.title}</h4>
+                      
+                
             </div>
            
         );
@@ -54,4 +64,4 @@ class UserCrafts extends Component {
 }
 
 
-export default UserCrafts;
+export default UserSingleCraftAndComments;

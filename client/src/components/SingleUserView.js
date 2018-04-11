@@ -7,7 +7,7 @@ class SingleUserView extends Component {
     constructor() {
         super();
         this.state = {
-            user: { },
+            user: {},
             crafts: [],
         };
     }
@@ -59,7 +59,7 @@ class SingleUserView extends Component {
 
                 {this.state.crafts.map(craft => (
                     <div key={craft.id}>
-                    <Link to={`/users/${userId}/crafts/${craft}`}>
+                    <Link to={`/users/${userId}/crafts/${craft.id}`}>
                     <Image>
                        <img src={craft.photo_url} alt="craft image" />
                        </Image>
