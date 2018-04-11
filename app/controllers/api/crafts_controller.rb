@@ -7,13 +7,13 @@ class Api::CraftsController < ApplicationController
     }
     end
 
-    # def create
-    #     @user = User.find(params[:user_id])
-    #     @craft = Craft.create!(craft_params)
-    #     render json: {
-    #         craft: @craft
-    #     }
-    # end
+    def create
+        @user = User.find(params[:user_id])
+        @craft = Craft.create!(craft_params)
+        render json: {
+            craft: @craft
+        }
+    end
 
     def show
         @user = User.find(params[:user_id])
