@@ -47,7 +47,8 @@ class CraftComment extends Component {
         const craftId = this.props.craftId;
         const commentsId = this.props.comments_id
         await axios.delete(`/api/users/${this.props.userId}/crafts/${this.props.craftId}/comments/${id}`)
-        this.props.history.push('/')
+        await this.getUserAndCraftsAndCommentsData(userId, craftId)
+        
     };
 
     // handleSubmit = async e => {
