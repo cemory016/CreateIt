@@ -7,7 +7,6 @@ const NavStyle = styled.div`
   justify-content: space-around;
   align-items: center;
   width: 100vw;
-  padding: 15px 2.5vw;
   border-bottom: 10px solid black; 
 `
 
@@ -15,7 +14,7 @@ const NavBar = () => {
   return (
     <NavStyle>
       <div>
-      <h1><Link to="/">Craft It!</Link></h1>
+        <h1><Link to="/">Craft It!</Link></h1>
       </div>
       <div>
         <div><Link to="/">Home</Link></div>
