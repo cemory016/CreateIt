@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
-import { Image } from 'semantic-ui-react'
+import { Image, Button } from 'semantic-ui-react'
 import CraftComment from './CraftComment'
+import NewCraftComment from './NewCraftComment'
 
 class UserSingleCraftAndComments extends Component {
     constructor() {
         super();
         this.state = {
             user: {},
-            craft: {},
+            craft: {
+                comments: []
+            },
         };
     }
 
@@ -53,6 +56,12 @@ class UserSingleCraftAndComments extends Component {
                 <h3>User will be able to edit and rate crafts from here</h3> 
                 <h4>as well as link to the crafts directions</h4>
                 <br />
+                <Button>New Comment</Button>
+                <NewCraftComment
+                    userId={this.props.match.params.user_id}
+                    craftId={this.props.match.params.id}
+                    getComment ={this.getUserAndCraftsData}
+                />
                 <h4>{this.state.craft.title}</h4>
                 <Image><img src={this.state.craft.photo_url} alt="" /> </Image>
             

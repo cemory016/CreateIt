@@ -19,7 +19,7 @@ class Api::CraftsController < ApplicationController
         @user = User.find(params[:user_id])
         @craft = Craft.find(params[:id])
         render json: {
-            craft: @craft
+            craft: @craft, include: [:comments]
         }
     end
 

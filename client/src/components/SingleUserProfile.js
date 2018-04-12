@@ -108,8 +108,7 @@ class SingleUserProfile extends Component {
                             </CraftInfo>
                         </CraftBorder>
                     </div>
-                ))
-                }
+                ))}
             </UserProfileContainer >
         );
 
