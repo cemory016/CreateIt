@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import EditCommentsForm from './EditCommentsForm';
 import { Image, Button, Card, Form, Input, TextArea } from 'semantic-ui-react';
 
-class CraftComment extends Component {
+class AllCraftComments extends Component {
     constructor() {
         super();
         this.state = {
@@ -99,19 +99,17 @@ class CraftComment extends Component {
                         {comment.title}
                         {comment.text}
                         <Button onClick={() => this.deleteComment(comment.id)}>Delete</Button>
-                        <Button onClick={() => this.editComment(comment.id)}>Edit Comment</Button>
+                        {/* <Button onClick={() => this.editComment(comment.id)}>Edit Comment</Button> */}
                     </div>
                 ))}
-                <Button>Edit</Button>
-                {/* <EditCommentsForm 
+                <EditCommentsForm 
                 handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}
-                comments={this.props.comments}
-                /> */}
+                comments={this.props.comments}/>
             </div>
         );
     }
 }
 
 
-export default CraftComment
+export default AllCraftComments

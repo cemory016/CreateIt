@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, TextArea, Button } from 'semantic-ui-react'
 import axios from 'axios'
 
-class NewCraftComment extends Component {
+class PostNewCraftComment extends Component {
     constructor() {
         super();
         this.state = {
@@ -47,4 +47,4 @@ class NewCraftComment extends Component {
     }
 }
 
-export default NewCraftComment; 
+export default PostNewCraftComment; 

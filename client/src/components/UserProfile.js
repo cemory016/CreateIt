@@ -37,18 +37,21 @@ text-align: justify;
 padding: 2vw;
 `
 
-class SingleUserProfile extends Component {
+class UserProfile extends Component {
     constructor() {
         super();
         this.state = {
             user: {},
             crafts: [],
+            comments: [],
+
         };
     }
 
     componentWillMount() {
         const userId = this.props.match.params.id;
         const craftId = this.props.match.params.id;
+        const commentId = this.props.match.params.id;
         this.getUserAndCraftsData(userId, craftId);
     }
     getUserAndCraftsData = async (userId) => {
@@ -116,4 +119,4 @@ class SingleUserProfile extends Component {
 }
 
 
-export default SingleUserProfile
+export default UserProfile
