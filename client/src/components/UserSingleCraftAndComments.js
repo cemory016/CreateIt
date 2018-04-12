@@ -10,7 +10,9 @@ class UserSingleCraftAndComments extends Component {
         super();
         this.state = {
             user: {},
-            craft: {},
+            craft: {
+                comments: []
+            },
         };
     }
 
@@ -56,7 +58,11 @@ class UserSingleCraftAndComments extends Component {
                 <h4>as well as link to the crafts directions</h4>
                 <br />
                 <Button>New Comment</Button>
-                <NewCraftComment />
+                <NewCraftComment
+                    userId={this.props.match.params.user_id}
+                    craftId={this.props.match.params.id}
+                    getComment ={this.getUserAndCraftsData}
+                />
                 <h4>{this.state.craft.title}</h4>
                 <Image><img src={this.state.craft.photo_url} alt="" /> </Image>
             
