@@ -23,51 +23,35 @@ class EditCommentsForm extends Component {
     }
     handleChange = event => {
         const comment = event.target.name
-        const newComment = { ...this.state.comment }
-        newComment[comment] = event.target.value
-        this.setState({ comment: newComment })
+        const editComment = { ...this.state.comment }
+        editComment[comment] = event.target.value
+        this.setState({ comment: editComment })
     };
+    handleSubmit = async event => {
+        event.preventDefault()
+        const userId = this.props.userId;
+        const craftId = this.props.craftId;
+        const commentId = this.props.id;
+        const commentUpdate = { ...this.state.comment }
+        await axios.patch(`/api/users/${userId}/crafts/${craftId}/comments/${commentId}`, commentUpdate)
+        await this.props.getComment(userId, craftId)
+    }
     render() {
-        if (this.state.error) {
-            return <div>{this.state.error}</div>
-        }
+        // if (this.state.error) {
+        //     return <div>{this.state.error}</div>
+        // }
         return (
             <FormContainer>
-                <Form onSubmit={this.handleSubmit}>
-                    <div>
-                        <lable>Title</lable>
-                    </div>
-                    <input
-                        placeholder='Title'
-                        name="title"
-                        type="text"
-                        value={this.state.title}
-                        onChange={this.handleChange}
-                    />
-                    <div>
-                        <lable>Comment Edit</lable>
-                    </div>
-                    <inout
-                        placeholder='Edit comment info'
-                        name="text"
-                        type="text"
-                        value={this.state.text}
-                        onChange={this.handleChange}
-                    />
-
-                    {/* <Form onSubmit={this.handleSubmit}>
+                    <Form onSubmit={this.handleSubmit}>
                         <Form.Field>
-                            <input placeholder='Title' name="title" type="text" onChange={this.handleChange} />
+                            <input placeholder={this.props} name="title" type="text" onChange={this.handleChange} />
                         </Form.Field>
                         <TextArea placeholder='Tell us more...' name="text" type="text" onChange={this.handleChange} />
-                        <Button onSubmit={this.handleSubmit}>Submit</Button>
-                    </Form> */}
-
-                    <Button onSubmit={this.handleSubmit}>Save Edits</Button>
-                </Form>
-            </FormContainer >
-        );
-    }
-}
-
+                        <Button onSubmit={this.handleSubmit}>Save Edits</Button>
+                    </Form>
+            </FormContainer>
+                );
+            }
+        }
+        
 export default EditCommentsForm;

@@ -55,21 +55,6 @@ class AllCraftComments extends Component {
         });
     }
 
-        //         // getUserAndCraftsAndCommentsData = async (userId, craftId) => {
-        //         //     try {
-        //         //         const userResponse = await axios.get(`/api/users/${userId}`)
-
-        //         //         const craftsResponse = await axios.get(`/api/users/${userId}/crafts/${craftId}`)
-
-        //         //         const commentsResponse = await axios.get(`/api/users/${userId}/crafts/${craftId}/comments`)
-        //         //         console.log(commentsResponse.data)
-        //         //         this.setState({
-        //         //             user: userResponse.data,
-        //         //             craft: craftsResponse.data.craft,
-        //         //             comments: commentsResponse.data.comments
-        //         //         });
-
-        //         //     }
         //         // catch (error) {
         //         //     console.log(error)
         //         //     await this.setState({ error: error.message });
@@ -103,6 +88,9 @@ class AllCraftComments extends Component {
                 await this.getCommentsData()
             };
         render() {
+            const userId = this.props.match.userId;
+        const craftId = this.props.match.craftsId;
+        const commentId = this.props.match.commentId;
 
             if (this.state.error) {
                 return <div>{this.state.error}</div>
@@ -120,11 +108,12 @@ class AllCraftComments extends Component {
                                 <Button onClick={() => this.deleteComment(comment.id)}>Delete</Button>
                                 <Button onClick={() => this.editComments(comment.id)}>Edit Comment</Button>
                                 <EditCommentsForm
-                                    handleChange={this.handleChange}
-                                    handleSubmit=
-                                    {this.handleSubmit}
-                                    comments={this.state.comments}
-                                    user={this.state.user_id} />
+                                    // handleChange={this.handleChange}
+                                    // handleSubmit=
+                                    // {this.handleSubmit}
+                                    commentsId={this.props.match.params.id}
+                                    userId={this.props.match.params.user_id} 
+                                    craftId={this.props.match.params.craft_id}/>
                                      </CraftBorder>
                             </div>
                         ))}
