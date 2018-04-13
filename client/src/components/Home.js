@@ -58,7 +58,7 @@ class Home extends Component {
             
             <ButtonPadding>
             
-              <Button type="submit"><Link to="/">Sign Up</Link></Button>
+              <Button type="submit"><Link to="/signup">Sign Up</Link></Button>
             </ButtonPadding>
             <ButtonPadding>
             <Button type="submit"><Link to="/users">Log In</Link></Button>

@@ -26,8 +26,8 @@ class PostNewCraftComment extends Component {
         event.preventDefault()
         const userId = this.props.userId;
         const craftId = this.props.craftId;
-        const commentNew = { ...this.state.comment }
-        await axios.post(`/api/users/${userId}/crafts/${craftId}/comments`, commentNew)
+        const commentUpdate = { ...this.state.comment }
+        await axios.post(`/api/users/${userId}/crafts/${craftId}/comments`, commentUpdate)
         await this.props.getComment(userId, craftId)
     }
 
