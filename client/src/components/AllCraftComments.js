@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import EditCommentsForm from './EditCommentsForm';
 import { Image, Button, Card, Form, Input, TextArea } from 'semantic-ui-react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const CraftBorder = styled.div`
 display: flex;
@@ -106,12 +106,11 @@ class AllCraftComments extends Component {
                                 {comment.title}
                                 {comment.text}
                                 <Button onClick={() => this.deleteComment(comment.id)}>Delete</Button>
-                                <Button onClick={() => this.editComments(comment.id)}>Edit Comment</Button>
                                 <EditCommentsForm
                                     // handleChange={this.handleChange}
                                     // handleSubmit=
                                     // {this.handleSubmit}
-                                    commentsId={this.props.id}
+                                    commentId={comment.id}
                                     userId={this.props.userId} 
                                     craftId={this.props.craftId}/>
                                      </CraftBorder>

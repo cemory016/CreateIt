@@ -17,13 +17,11 @@ class App extends Component {
               <div>
               <NavBar/>
               <Switch>
-                <div className="App">
                   <Route exact path="/" component={Home}/>
                   <Route exact path="/signup" component={SignUp}/>
                   <Route exact path="/users" component={AllUserList}/>
                   <Route exact path="/users/:id" component={UserProfile}/>
                   <Route exact path="/users/:user_id/crafts/:id" component={UserSingleCraftAndAllComments}/>
-                </div>
                 </Switch>
                 </div>
             </Router>

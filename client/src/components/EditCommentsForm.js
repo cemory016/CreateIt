@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Form, TextArea, Button } from 'semantic-ui-react'
-import axios from 'axios'
-import styled from 'styled-components'
+import React, { Component } from 'react';
+import { Form, TextArea, Button } from 'semantic-ui-react';
+import axios from 'axios';
+import styled from 'styled-components';
 
 const FormContainer = styled.div`
   width: 60vw;
@@ -31,10 +31,12 @@ class EditCommentsForm extends Component {
         event.preventDefault()
         const userId = this.props.userId;
         const craftId = this.props.craftId;
-        const commentId = this.props.id;
+        const commentId = this.props.commentId;
+        console.log('help',commentId)
+        console.log(this.props)
         const commentUpdate = { ...this.state.comment }
         await axios.patch(`/api/users/${userId}/crafts/${craftId}/comments/${commentId}`, commentUpdate)
-        await this.props.getComment(userId, craftId)
+        await this.props.getComment(userId, craftId, commentId)
     }
     render() {
         // if (this.state.error) {
