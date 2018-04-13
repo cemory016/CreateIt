@@ -6,7 +6,6 @@ class PostNewCraftComment extends Component {
     constructor() {
         super();
         this.state = {
-           // comments: [],
             comment: {
                 title: "",
                 text: "",
@@ -35,6 +34,8 @@ class PostNewCraftComment extends Component {
     render() {
         return (
             <div>
+                {/* add on toggle to pull up form */}
+                 <Button>New Comment</Button>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Field>
                         <input placeholder='Title' name="title" type="text" onChange={this.handleChange} />

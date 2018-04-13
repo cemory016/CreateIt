@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import { Form, TextArea, Button } from 'semantic-ui-react'
 import axios from 'axios'
+import styled from 'styled-components'
+
+const FormContainer = styled.div`
+  width: 60vw;
+  margin: 20px auto;
+`;
 
 class EditCommentsForm extends Component {
     constructor() {
@@ -8,64 +14,60 @@ class EditCommentsForm extends Component {
         this.state = {
             user: {},
             craft: {},
-           // comments: [],
+            comments: [],
             comment: {
                 title: "",
                 text: "",
             }
         };
     }
-    componentWillMount() {
-        this.getUserData()
-        this.getCraftsData()
-        this.getCommentsData()
-    }
-    getUserData = async () => {
-        const userId = this.props.userId;
-        const userResponse = await axios.get(`/api/users/${userId}`)
-        this.setState({
-            user: userResponse.data,
-        });
+    handleChange = event => {
+        const comment = event.target.name
+        const newComment = { ...this.state.comment }
+        newComment[comment] = event.target.value
+        this.setState({ comment: newComment })
     };
-    getCraftsData = async () => {
-        const userId = this.props.userId;
-        const craftId = this.props.craftId;
-        const craftsResponse = await axios.get(`/api/users/${userId}/crafts/${craftId}`)
-        this.setState({
-            craft: craftsResponse.data.craft,
-        });
-    };
-    getCommentsData = async () => {
-        const userId = this.props.userId;
-        const craftId = this.props.craftId;
-        const commentsResponse = await axios.get(`/api/users/${userId}/crafts/${craftId}/comments`)
-        this.setState({
-            comments: commentsResponse.data.comments
-        });
-    };
+    render() {
+        if (this.state.error) {
+            return <div>{this.state.error}</div>
+        }
+        return (
+            <FormContainer>
+                <Form onSubmit={this.handleSubmit}>
+                    <div>
+                        <lable>Title</lable>
+                    </div>
+                    <input
+                        placeholder='Title'
+                        name="title"
+                        type="text"
+                        value={this.state.title}
+                        onChange={this.handleChange}
+                    />
+                    <div>
+                        <lable>Comment Edit</lable>
+                    </div>
+                    <inout
+                        placeholder='Edit comment info'
+                        name="text"
+                        type="text"
+                        value={this.state.text}
+                        onChange={this.handleChange}
+                    />
 
-    editComment = async (id) => {
-        const userId = this.props.userId;
-        const craftId = this.props.craftId;
-        const commentsId = this.props.comments_id
-        await axios.patch(`/api/users/${this.props.userId}/crafts/${this.props.craftId}/comments/${id}`)
-        await this.getCommentsData()
-    };
-  render() {
-    if (this.state.error) {
-        return <div>{this.state.error}</div>
+                    {/* <Form onSubmit={this.handleSubmit}>
+                        <Form.Field>
+                            <input placeholder='Title' name="title" type="text" onChange={this.handleChange} />
+                        </Form.Field>
+                        <TextArea placeholder='Tell us more...' name="text" type="text" onChange={this.handleChange} />
+                        <Button onSubmit={this.handleSubmit}>Submit</Button>
+                    </Form> */}
+
+                    <Button onSubmit={this.handleSubmit}>Save Edits</Button>
+                </Form>
+            </FormContainer >
+        );
     }
-    return (
-        <Form onSubmit={this.handleSubmit}>
-        <Form.Field>
-            <input placeholder='Title' name="title" type="text" onChange={this.handleChange} />
-        </Form.Field>
-        <TextArea placeholder='Tell us more...' name="text" type="text" onChange={this.handleChange} />
-        {/* <Button onSubmit={this.handleSubmit}>Submit</Button> */}
-        <Button onClick={this.props.editToggle}>Edit Comment</Button>
-    </Form>
-    );
-  }
 }
 
 export default EditCommentsForm;
