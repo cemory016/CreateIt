@@ -88,9 +88,9 @@ class AllCraftComments extends Component {
                 await this.getCommentsData()
             };
         render() {
-            const userId = this.props.match.userId;
-        const craftId = this.props.match.craftsId;
-        const commentId = this.props.match.commentId;
+            const userId = this.props.userId;
+        const craftId = this.props.craftId;
+        const commentId = this.props.commentId;
 
             if (this.state.error) {
                 return <div>{this.state.error}</div>
@@ -111,9 +111,9 @@ class AllCraftComments extends Component {
                                     // handleChange={this.handleChange}
                                     // handleSubmit=
                                     // {this.handleSubmit}
-                                    commentsId={this.props.match.params.id}
-                                    userId={this.props.match.params.user_id} 
-                                    craftId={this.props.match.params.craft_id}/>
+                                    commentsId={this.props.id}
+                                    userId={this.props.userId} 
+                                    craftId={this.props.craftId}/>
                                      </CraftBorder>
                             </div>
                         ))}
