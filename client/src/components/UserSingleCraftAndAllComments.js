@@ -35,10 +35,11 @@ class UserSingleCraftAndComments extends Component {
             const userResponse = await axios.get(`/api/users/${userId}`)
 
             const craftsResponse = await axios.get(`/api/users/${userId}/crafts/${craftId}`)
+
             console.log(craftsResponse.data)
             this.setState({
                 user: userResponse.data,
-                craft: craftsResponse.data.craft
+                craft: craftsResponse.data.craft,
             });
 
         }
@@ -52,7 +53,7 @@ class UserSingleCraftAndComments extends Component {
 
     render() {
         const userId = this.props.match.params.id;
-        const craftId = this.props.match.params.id
+        const craftId = this.props.match.params.id;
         if (this.state.error) {
             return <div>{this.state.error}</div>
 

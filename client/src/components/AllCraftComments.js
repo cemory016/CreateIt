@@ -112,7 +112,8 @@ class AllCraftComments extends Component {
                                     // {this.handleSubmit}
                                     commentId={comment.id}
                                     userId={this.props.userId} 
-                                    craftId={this.props.craftId}/>
+                                    craftId={this.props.craftId}
+                                    getComment={this.getCommentsData}/>
                                      </CraftBorder>
                             </div>
                         ))}
