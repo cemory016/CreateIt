@@ -3,96 +3,83 @@ import { Form, Button, Input } from 'semantic-ui-react'
 import axios from 'axios'
 
 class SignUp extends Component {
-    constructor() {
-        super();
-        this.state = {
-            user: {},
-        }
-      }
-
-    fetchUsers = async () => {
-        try {
-            const res = await axios.get('/api/users');
-            await this.setState({users: res.data});
-            return res.data;
-        }
-        catch (err) {
-            console.log(err)
-            await this.setState({error: err.message})
-            return err.message
-        }
-
+constructor(){
+    super();
+    this.state ={
+        newUser: {
+            firstName: '',
+            lastName: '',
+            email: '',
+            userName: '',
+            photo_url: ''
+          },
     }
-    render () {
-      return (
-        <Form onSubmit={this.props.createNewUser}>
-          <Form.Field>
-            <label>First Name</label>
-            <input placeholder='Name' name="name" onChange={this.props.handleChange} value={this.props.newUser.firstName}/>
-          </Form.Field>
-          <Form.Field>
-            <label>Last Name</label>
-            <input placeholder='Name' name="name" onChange={this.props.handleChange} value={this.props.newUser.lastName}/>
-          </Form.Field>
-          <Form.Field>
-            <label>Email</label>
-            <input placeholder='Nationality' name="nationality" onChange={this.props.handleChange} value={this.props.newUser.email}/>
-          </Form.Field>
-          <Form.Field>
-            <label>User Name</label>
-            <input placeholder='Name' name="name" onChange={this.props.handleChange} value={this.props.newUser.userName}/>
-          </Form.Field>
-          <Form.Field>
-            <label>Photo Url</label>
-            <input placeholder='Photo Url' name="photo_url" onChange={this.props.handleChange} value={this.props.newUser.photo_url}/>
-          </Form.Field>
-          <Button type='submit'>Submit</Button>
-        </Form>
-      )
+}
+    handleChange = event => {
+        const name = event.target.name
+        const newUsers = { ...this.state.newUser }
+        newUsers[name] = event.target.value
+        this.setState({ newUser: newUsers })
+        console.log(this.state)
+    };
+    //   handleSubmit = async event => {
+    //     event.preventDefault()
+    //     const userId = this.props.userId;
+    //     const userNew = { ...this.state.user }
+    //     await axios.post(`/api/users/`, userNew)
+    //     // await this.props.getComment(userId)
+    //   }
+
+    handleSubmit = async event => {
+        event.preventDefault()
+        const payload = this.state.newUser
+        const response = await axios.post(`/api/users/`, payload)
+        console.log(response.data)
+        const users = [...this.state.newUser, response.data]
+        this.setState({ newUser: users })
+        this.props.toggleSignUp()
+        await this.props.getUsers()
     }
-  }
-  
-  export default SignUp
+    // createNewUser = async (e) => {
+    //     e.preventDefault()
+    //     const response = await axios.post('api/users', this.state.newUser)
+    //     const user = [...this.state.user, response.data]
+    //     this.setState({
+    //       user: {},
+    //     })
+    //   }
 
+    render() {
+        return (
+            <div>
+                <h1>This is my Toggle signUp form!</h1>
+                <Form onSubmit={this.handleSubmit}>
+                    <Form.Field>
+                        <label>First Name</label>
+                        <input placeholder='First Name' name="firstName" onChange={this.handleChange} value={this.state.firstName} />
+                    </Form.Field>
+                    <Form.Field>
+                        <label>Last Name</label>
+                        <input placeholder='Last Name' name="lastName" onChange={this.handleChange} value={this.state.lastName} />
+                    </Form.Field>
+                    <Form.Field>
+                        <label>Email</label>
+                        <input placeholder='Email' name="email" onChange={this.handleChange} value={this.state.email} />
+                    </Form.Field>
+                    <Form.Field>
+                        <label>User Name</label>
+                        <input placeholder='User Name' name="userName" onChange={this.handleChange} value={this.state.userName} />
+                    </Form.Field>
+                    <Form.Field>
+                        <label>Photo Url</label>
+                        <input placeholder='Photo Url' name="photo_url" onChange={this.handleChange} value={this.state.photo_url} />
+                    </Form.Field>
+                    <Button type='submit'>Submit</Button>
+                    <Button onClick={this.props.toggleSignUp}>cancel</Button>
+                </Form>
+            </div>
+        )
+    }
+}
 
-
-// class SignUp extends Component {
-//     constructor() {
-//         super();
-//         this.state = {
-//             user: {},
-//         }
-//     };
-
-//     handleChange = event => {
-//         const user = event.target.name
-//         const newUser = { ...this.state.user }
-//         newUser[user] = event.target.value
-//         this.setState({ user: newUser })
-//     };
-//     handleSubmit = async event => {
-//         event.preventDefault()
-//         const userId = this.props.userId;   
-//         const userNew = { ...this.state.user }
-//         await axios.post(`/api/users/`, userNew)
-//         // await this.props.getComment(userId)
-//     }
-//     render() {
-//         return (
-//             <div>
-//                 <h2>This is my SIGN UP toggle VIEW</h2>
-//                 <Form onSubmit={this.handleSubmit}>
-//                     <Form.Group widths='equal'>
-//                         <Form.Input fluid id='form-subcomponent-shorthand-input-first-name' label='First name' placeholder='First name' />
-//                         <Form.Input fluid id='form-subcomponent-shorthand-input-last-name' label='Last name' placeholder='Last name' />
-//                         <Form.Input fluid id='form-subcomponent-shorthand-input-email' label='email@email.com' placeholder='email' />
-//                         <Form.Input fluid id='form-subcomponent-shorthand-input-puserName' label='UserName' placeholder='username' />
-//                     </Form.Group>
-//                     <Button onSubmit={this.handleSubmit}>Submit Sign Up Form</Button>
-//                 </Form>
-//             </div>
-//         );
-//     }
-// }
-
-// export default SignUp; 
+export default SignUp

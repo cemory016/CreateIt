@@ -48,7 +48,6 @@ class Home extends Component {
     super();
     this.state = {
       user: [],
-      signUpOpen: false,
       newUser: {
         firstName: '',
         lastName: '',
@@ -56,12 +55,15 @@ class Home extends Component {
         userName: '',
         photo_url: ''
       },
+      signUpOpen: false,
+      button: true,
       error: ''
     }
   }
 
   toggleSignUp = () => {
     this.setState({ signUpOpen: !this.state.signUpOpen })
+    this.setState({ button: !this.state.button })
   }
 
   handleChange = event => {
@@ -70,30 +72,33 @@ class Home extends Component {
     newUser[user] = event.target.value
     this.setState({ user: newUser })
   };
-createNewUser = async (e) => 
-{
-  e.preventDefault()
-  const response = await axios.post('api/users', this.state.newUser)
-  const user = [...this.state.user, response.data]
-  this.setState({
-    user,
-    newUser: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      userName: '',
-      photo_url: ''
-    }
-  })
-} 
- //     handleSubmit = async event => {
-  //         event.preventDefault()
-  //         const userId = this.props.userId;   
-  //         const userNew = { ...this.state.user }
-  //         await axios.post(`/api/users/`, userNew)
-  //         // await this.props.getComment(userId)
-  //     }
 
+  createNewUser = async (e) => {
+    e.preventDefault()
+    const response = await axios.post('api/users', this.state.newUser)
+    const user = [...this.state.user, response.data]
+    this.setState({
+      user,
+      newUser: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        userName: '',
+        photo_url: ''
+      }
+
+    })
+  }
+  // handleSubmit = async event => {
+  //   event.preventDefault()
+  //   const payload = this.state.newUser
+  //   const response = await axios.post(`/api/users/`, payload)
+  //   console.log(response.data)
+  //   const users = [ ...this.state.newUser, response.data ]
+  // this.setState({newUser: users})
+  // this.props.toggleSignUp()
+  // // await this.props.getUsers
+  // }
 
 
 
@@ -112,11 +117,21 @@ createNewUser = async (e) =>
 
             <ButtonPadding>
 
-              <Button primary onClick={this.toggleSignUp}>
-                Sign Up
-        </Button>
-              {this.state.signUpOpen ? <SignUp createNewUser={this.createNewUser} handleChange={this.handleChange} newUser={this.state.newUser} /> : null}
+             {this.state.button ? (<div><Button primary onClick={this.toggleSignUp}>Sign Up!</Button></div>) : null}
+
+            {this.state.signUpOpen ? (<SignUp createNewUser={this.createNewUser} handleChange={this.handleChange} newUser={this.state.newUser} />) : null}
+            
+            
+            
             </ButtonPadding>
+
+            {/* {this.state.button ? (<div><Button onClick={this.toggleCommentForm}>Write a comment!</Button></div>) : null}
+
+            {this.state.commentForm ? (<CommentForm cityId={this.state.city.id} getPost={this.getPost}
+              toggleCommentForm={this.toggleCommentForm} />) : null} */}
+
+
+
             <ButtonPadding>
               <Button type="submit"><Link to="/users">Log In</Link></Button>
             </ButtonPadding>
