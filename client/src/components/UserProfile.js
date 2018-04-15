@@ -8,36 +8,63 @@ const UserProfileContainer = styled.div`
 background-image: url("https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8b5d177ad38580e039c7f403c0554ea6&auto=format&fit=crop&w=1567&q=80");
 background-size: 50% 50%;
 background-repeat: repeat;
+margin: 3vw;
+margin-bottom: 0vw;
 align-content: center;
-`;
+`
 
 const UserInfoContainer = styled.div`
 align-self: auto;
 text-align: center;
+width: 50vw;
+`
+const RandomCraftArea = styled.div`
+display: flex;
+flex-wrap: wrap;
+flex-direction: row;
+width: 50vw;
+`
+const BigBox = styled.div`
+display: flex;
+flex-direction: row;
+width: 100vw;
+`
+const RandomCraftImage = styled.div`
+display: flex;
+flex-wrap: wrap;
+flex-direction: column;
+align-content: center;
+img {
+    width: auto;
+    height: 250px;
+}
 `
 
 const CraftBorder = styled.div`
 display: flex;
-border: solid red;
 border-radius: 70px 20px;
-padding: 1em;
-margin: 2vw;
-background-color: rgb(128, 128, 128, .3);
-`;
+padding: 5em;
+margin: 5vw;
+margin-bottom: 0em;
+background-color: rgb(128, 128, 128, .15);
+`
+
 const CraftTitle = styled.div`
 h4 { 
 font-weight: bold;
+color: #935004;
 }
 `
 const CraftImage = styled.div`
 display: flex;
+flex-wrap: wrap;
 border: solid black;
 opacity: 0.8;
 img {
     width: auto;
     height: 250px;
 }
-`;
+`
 
 const CraftInfo = styled.div`
 display: flex;
@@ -95,17 +122,25 @@ class UserProfile extends Component {
         }
         return (
             <UserProfileContainer>
-                <UserInfoContainer>
-                    <h4>I am a single user and this is my profile</h4>
-                    <h1>{this.state.user.firstName} {this.state.user.lastName}</h1>
-                    <img src={this.state.user.photo_url} alt="userImage" size="400vw 200vw" />
-
-
-
-                    <h2>User Name: {this.state.user.userName}</h2>
-                    <h2>Email: {this.state.user.email}</h2>
-                    <Button>Edit User Profile Info</Button>
-                </UserInfoContainer>
+                <BigBox>
+                    <UserInfoContainer>
+                        <h4>I am a single user and this is my profile</h4>
+                        <h1>{this.state.user.firstName} {this.state.user.lastName}</h1>
+                        <img src={this.state.user.photo_url} alt="userImage" size="400vw 200vw" />
+                        <h2>User Name: {this.state.user.userName}</h2>
+                        <h2>Email: {this.state.user.email}</h2>
+                        <Button>Edit User Profile Info</Button>
+                    </UserInfoContainer>
+                    <RandomCraftArea>
+                        <h2>Work on getting a randomly generated craft to populate here</h2>
+                        <RandomCraftImage>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs56Q00C_cYBjDKk8HpUpv-1uHUge-OxVYoYsptd3f9lk5LmC6" alt="randomCraft" size="50px 50px" />
+                        </RandomCraftImage>
+                        <div><h3>title</h3></div>
+                        <div><h4>Craft It!!</h4></div>
+                        <div><h4>Skip It!</h4></div>
+                    </RandomCraftArea>
+                </BigBox>
                 {this.state.crafts.map(craft => (
                     <div key={craft.id}>
                         <CraftBorder>

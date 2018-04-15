@@ -9,8 +9,8 @@ import axios from 'axios'
 
 const LandingImage = styled.div`
   background-image: url("https://images.unsplash.com/photo-1509664158680-07c5032b51e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=442ccbf5c1e7e58e0b9f1ed3e494fee8&auto=format&fit=crop&w=1950&q=80"), radial-gradient(19% 73%, #E1BE0D 0%, rgba(230,212,3,0.00) 79%);
-  /* background-size: cover;
-  background-repeat: no-repeat; */
+ background-size: cover;
+  background-repeat: no-repeat;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -23,7 +23,7 @@ const HomeContainer = styled.div`
 `;
 
 const YellowGrade = styled.div`
-/* background-image: radial-gradient(19% 73%, #E1BE0D 0%, rgba(230,212,3,0.00) 79%); */
+background-image: radial-gradient(19% 73%, #E1BE0D 0%, rgba(230,212,3,0.00) 79%);
 `;
 
 const LandingText = styled.div`
