@@ -7,7 +7,6 @@ import UserSingleCraftAndAllComments from "./components/UserSingleCraftAndAllCom
 import UserProfile from "./components/UserProfile";
 import SignUp from './components/SignUp';
 import AllCraftComments from "./components/AllCraftComments";
-import ImageTest from './components/ImageTest'
 import LoginForm from "./components/LogInForm";
 import "./App.css";
 
@@ -21,8 +20,6 @@ class App extends Component {
               <NavBar/>
               <Switch>
                   <Route exact path="/" component={Home}/>
-                  <Route exact path="/imagetest" component={ImageTest}/>
-                  <Route exact path="/signup" component={SignUp}/>
                   <Route exact path="/login" component={LoginForm}/>
                   <Route exact path="/users" component={AllUserList}/>
                   <Route exact path="/users/:id" component={UserProfile}/>

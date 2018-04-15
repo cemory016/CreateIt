@@ -32,28 +32,31 @@ class EditCommentsForm extends Component {
         const userId = this.props.userId;
         const craftId = this.props.craftId;
         const commentId = this.props.commentId;
-        console.log('help',commentId)
-        console.log(this.props)
-        const commentUpdate = { ...this.state.comment }
+        const commentUpdate = { ...this.state.commentId }
         await axios.patch(`/api/users/${userId}/crafts/${craftId}/comments/${commentId}`, commentUpdate)
         await this.props.getComment(userId, craftId, commentId)
+this.setState({ commentId: commentUpdate})
+        this.props.toggleEditComment()
     }
     render() {
-        // if (this.state.error) {
-        //     return <div>{this.state.error}</div>
-        // }
+        if (this.state.error) {
+            return <div>{this.state.error}</div>
+        };
         return (
             <FormContainer>
-                    <Form onSubmit={this.handleSubmit}>
-                        <Form.Field>
-                            <input placeholder={this.props} name="title" type="text" onChange={this.handleChange} />
-                        </Form.Field>
-                        <TextArea placeholder='Tell us more...' name="text" type="text" onChange={this.handleChange} />
-                        <Button onSubmit={this.handleSubmit}>Save Edits</Button>
-                    </Form>
+                <Form onSubmit={this.handleSubmit}>
+                    <Form.Field>
+                        <input placeholder={this.props} name="title" type="text" onChange={this.handleChange} />
+                    </Form.Field>
+                    <TextArea placeholder='Tell us more...' name="text" type="text" onChange={this.handleChange} />
+                    <Button onSubmit={this.handleSubmit}
+                    // onClick={this.props.toggleEditComment}
+                    >Save Edits</Button>
+
+                </Form>
             </FormContainer>
-                );
-            }
-        }
-        
-export default EditCommentsForm;
+        );
+    }
+}
+
+export default EditCommentsForm;    

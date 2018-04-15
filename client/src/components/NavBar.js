@@ -1,26 +1,36 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { Button } from 'semantic-ui-react'
+import SignUp from './SignUp'
+
 
 const NavStyle = styled.div`
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: auto;
   width: 100vw;
-  /* padding: 15px 2.5vw; */
-  border-bottom: 10px solid black; 
+  padding: 0%;
+  margin: 0px;
+`
+const LandingTitle = styled.div`
+text-decoration: none;
+opacity: 0.95;
+font-size: 51px;
+color: #3D3300;
+text-align: left;
+
 `
 
 const NavBar = () => {
+  this.state = {
+    toggleSignUp: false,
+  }
   return (
     <NavStyle>
       <div>
-        <h1><Link to="/">Craft It!</Link></h1>
-      </div>
-      <div>
-        <div><Link to="/">Home</Link></div>
-        <div><Link to="/signup">Sign Up</Link></div>
-        <div><Link to="/users">Log In</Link></div>
+        <LandingTitle>
+          <Link to="/">Craft It!</Link>
+        </LandingTitle>
       </div>
     </NavStyle>
   )

@@ -5,36 +5,38 @@ import { Link } from 'react-router-dom';
 import SignUp from './SignUp';
 import axios from 'axios'
 
+
+
 const LandingImage = styled.div`
-  background-image: url("https://images.unsplash.com/photo-1509664158680-07c5032b51e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=442ccbf5c1e7e58e0b9f1ed3e494fee8&auto=format&fit=crop&w=1950&q=80");
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-image: url("https://images.unsplash.com/photo-1509664158680-07c5032b51e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=442ccbf5c1e7e58e0b9f1ed3e494fee8&auto=format&fit=crop&w=1950&q=80"), radial-gradient(19% 73%, #E1BE0D 0%, rgba(230,212,3,0.00) 79%);
+  /* background-size: cover;
+  background-repeat: no-repeat; */
   height: 100vh;
   width: 100vw;
   display: flex;
 `;
+
 const HomeContainer = styled.div`
   text-align: center;
-  /* overflow-y: scroll;
-  overflow-x: hidden; */
-  background-color: #151515;
-  color: #EAEAEA;
+  overflow-y: scroll;
+  overflow-x: hidden;
+`;
+
+const YellowGrade = styled.div`
+/* background-image: radial-gradient(19% 73%, #E1BE0D 0%, rgba(230,212,3,0.00) 79%); */
 `;
 
 const LandingText = styled.div`
-  margin: auto;
-  text-align: center;
-  background: rgba(10, 15, 5, 0.2);
-  padding: 100px;
-  color: #9A2C3E;
-  border-radius: 3px;
-  LandingText.h1 {
-    font-size: 40px;
-  }
-`;
+  font-size: 35px;
+  color: #3D3300;
+  letter-spacing: 0;
+  text-align: left;
+  }`;
+
 const ButtonPadding = styled.div`
   margin: 5px;
-`;
+  `;
+
 const BodyContent = styled.div`
   width: 75vw;
   height: 100vh;
@@ -47,7 +49,7 @@ class Home extends Component {
   constructor() {
     super();
     this.state = {
-      user: [],
+      users: [],
       newUser: {
         firstName: '',
         lastName: '',
@@ -60,10 +62,17 @@ class Home extends Component {
       error: ''
     }
   }
+  componentDidMount() {
+    this.getAllUsers()
+  }
 
+  getAllUsers = async () => {
+    const res = await axios.get("/api/users")
+    console.log(res.data)
+    this.setState({ users: res.data })
+  }
   toggleSignUp = () => {
     this.setState({ toggleSignUp: !this.state.toggleSignUp })
-    this.setState({ button: !this.state.button })
   }
 
   handleChange = event => {
@@ -105,45 +114,38 @@ class Home extends Component {
   render() {
     return (
       <HomeContainer>
-        <LandingImage>
-          <LandingText>
-            <h1>Craft IT</h1>
-            <p>
-              If Trump Ipsum weren’t my own words, perhaps I’d be dating it.{" "}
-              <br />I was going to say something extremely rough to Lorem Ipsum,<br />{" "}
-              to its family, and I said to myself, "I can't do it. <br /> I just
-              can't do it. It's inappropriate. It's not nice."
+        <YellowGrade>
+          <LandingImage>
+            <LandingText>
+              <p>
+                If Trump Ipsum weren’t my own words, perhaps I’d be dating it.{" "}
+                <br />I was going to say something extremely rough to Lorem Ipsum,<br />{" "}
+                to its family, and I said to myself, "I can't do it. <br /> I just
+                can't do it. It's inappropriate. It's not nice."
             </p>
 
-            <ButtonPadding>
+              <ButtonPadding>
 
-             {this.state.button ? (<div><Button primary onClick={this.toggleSignUp}>Sign Up!</Button></div>) : null}
+                {this.state.button ? (<div><Button size='massive' primary onClick={this.toggleSignUp}>Sign Up!</Button></div>) : null}
 
-            {this.state.toggleSignUp ? (<SignUp 
-            createNewUser={this.createNewUser} handleChange={this.handleChange} newUser={this.state.newUser} 
-            toggleSignUp={this.toggleSignUp}/>) : null}
-            
-            
-            
-            </ButtonPadding>
-
-            {/* {this.state.button ? (<div><Button onClick={this.toggleCommentForm}>Write a comment!</Button></div>) : null}
-
-            {this.state.commentForm ? (<CommentForm cityId={this.state.city.id} getPost={this.getPost}
-              toggleCommentForm={this.toggleCommentForm} />) : null} */}
+                {this.state.toggleSignUp ? (<SignUp
+                  createNewUser={this.createNewUser} handleChange={this.handleChange} newUser={this.state.newUser}
+                  toggleSignUp={this.toggleSignUp} />) : null}
 
 
 
-            <ButtonPadding>
-              <Button type="submit"><Link to="/users">Log In</Link></Button>
-            </ButtonPadding>
-          </LandingText>
-        </LandingImage>
-
+              </ButtonPadding>
+              <ButtonPadding>
+                <Button type="submit"><Link to="/users">Log In</Link></Button>
+              </ButtonPadding>
+            </LandingText>
+          </LandingImage>
+        
         <BodyContent>
           <h1>This is my body content</h1>
           <h4>put some stuff about crafting down here</h4>
         </BodyContent>
+        </YellowGrade>
       </HomeContainer>
     );
   }

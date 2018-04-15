@@ -34,11 +34,12 @@ constructor(){
         event.preventDefault()
         const payload = this.state.newUser
         const response = await axios.post(`/api/users/`, payload)
-        console.log(response.data)
         const users = [...this.state.newUser, response.data]
         this.setState({ newUser: users })
         this.props.toggleSignUp()
     }
+
+    
     // createNewUser = async (e) => {
     //     e.preventDefault()
     //     const response = await axios.post('api/users', this.state.newUser)

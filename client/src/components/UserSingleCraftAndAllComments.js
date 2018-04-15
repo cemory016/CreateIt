@@ -78,8 +78,6 @@ class UserSingleCraftAndComments extends Component {
                     userId={this.props.match.params.user_id}
                     craftId={this.props.match.params.id}
                 />
-
-
             </div>
 
         );

@@ -21,6 +21,8 @@ class AllCraftComments extends Component {
             craft: {},
             comments: [
             ],
+            toggleEditComment: false,
+            button: true,
         };
     }
     componentWillMount() {
@@ -51,6 +53,9 @@ class AllCraftComments extends Component {
             comments: commentsResponse.data.comments
         });
     }
+    toggleEditComment = () => {
+        this.setState({ toggleEditComment: !this.state.toggleEditComment})
+    }
 
     deleteComment = async (id) => {
         const userId = this.props.userId;
@@ -79,14 +84,27 @@ class AllCraftComments extends Component {
                             <h2>{comment.title}</h2>
                             <p>{comment.text}</p>
                             <Button onClick={() => this.deleteComment(comment.id)}>Delete</Button>
-                            <EditCommentsForm
-                                // handleChange={this.handleChange}
-                                // handleSubmit=
-                                // {this.handleSubmit}
+
+                            {this.state.button ? (<div><Button size='massive' primary onClick={this.toggleEditComment}>Edit Comment</Button></div>) : null}
+
+                            {this.state.toggleEditComment ? (<EditCommentsForm
                                 commentId={comment.id}
                                 userId={this.props.userId}
                                 craftId={this.props.craftId}
-                                getComment={this.getCommentsData} />
+                                getComment={this.getCommentsData}
+                                toggleSignUp={this.toggleEditComment} />) : null}
+
+
+                            {/* // <EditCommentsForm 
+                            //     // handleChange={this.handleChange}
+                            //     // handleSubmit=
+                            //     // {this.handleSubmit}
+                            //     commentId={comment.id}
+                            //     userId={this.props.userId}
+                            //     craftId={this.props.craftId}
+                            //     getComment={this.getCommentsData} />*/}
+
+
                         </CraftBorder>
                     </div>
                 ))}
