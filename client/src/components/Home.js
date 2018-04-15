@@ -55,14 +55,14 @@ class Home extends Component {
         userName: '',
         photo_url: ''
       },
-      signUpOpen: false,
+      toggleSignUp: false,
       button: true,
       error: ''
     }
   }
 
   toggleSignUp = () => {
-    this.setState({ signUpOpen: !this.state.signUpOpen })
+    this.setState({ toggleSignUp: !this.state.toggleSignUp })
     this.setState({ button: !this.state.button })
   }
 
@@ -119,7 +119,9 @@ class Home extends Component {
 
              {this.state.button ? (<div><Button primary onClick={this.toggleSignUp}>Sign Up!</Button></div>) : null}
 
-            {this.state.signUpOpen ? (<SignUp createNewUser={this.createNewUser} handleChange={this.handleChange} newUser={this.state.newUser} />) : null}
+            {this.state.toggleSignUp ? (<SignUp 
+            createNewUser={this.createNewUser} handleChange={this.handleChange} newUser={this.state.newUser} 
+            toggleSignUp={this.toggleSignUp}/>) : null}
             
             
             

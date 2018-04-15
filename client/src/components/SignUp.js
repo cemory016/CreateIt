@@ -38,7 +38,6 @@ constructor(){
         const users = [...this.state.newUser, response.data]
         this.setState({ newUser: users })
         this.props.toggleSignUp()
-        await this.props.getUsers()
     }
     // createNewUser = async (e) => {
     //     e.preventDefault()
