@@ -13,6 +13,7 @@ align-content: center;
 
 const UserInfoContainer = styled.div`
 align-self: auto;
+text-align: center;
 `
 
 const CraftBorder = styled.div`
@@ -23,11 +24,19 @@ padding: 1em;
 margin: 2vw;
 background-color: rgb(128, 128, 128, .3);
 `;
-
+const CraftTitle = styled.div`
+h4 { 
+font-weight: bold;
+}
+`
 const CraftImage = styled.div`
 display: flex;
 border: solid black;
 opacity: 0.8;
+img {
+    width: auto;
+    height: 250px;
+}
 `;
 
 const CraftInfo = styled.div`
@@ -91,7 +100,7 @@ class UserProfile extends Component {
                     <h1>{this.state.user.firstName} {this.state.user.lastName}</h1>
                     <img src={this.state.user.photo_url} alt="userImage" size="400vw 200vw" />
 
-                    
+
 
                     <h2>User Name: {this.state.user.userName}</h2>
                     <h2>Email: {this.state.user.email}</h2>
@@ -101,13 +110,15 @@ class UserProfile extends Component {
                     <div key={craft.id}>
                         <CraftBorder>
                             <Link to={`/users/${userId}/crafts/${craft.id}`}>
-                                <h4>{craft.title}</h4>
+                                <CraftTitle>
+                                    <h4>{craft.title}</h4>
+                                </CraftTitle>
                                 <CraftImage>
                                     <img src={craft.photo_url} alt="craft_image" />
                                 </CraftImage>
                             </Link>
                             <CraftInfo>
-                                <p>This will the any comment the user has on this craft, but validated to only shoule 100 characters with a link that reads ...more to navigated the user to the single craft view with all comments.</p>
+                                <p>This will the any comment the user has on this craft, but validated to only shoule 100 characters with a link that reads ...more to navigated the user to the single craft view with all comments.      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras laoreet laoreet augue nec bibendum. Duis ac ligula ac diam posuere cursus. Nunc porttitor gravida orci, id interdum elit tincidunt id. Vivamus et nisi quis tellus vulputate consectetur. Cras laoreet sit amet nunc at bibendum. Fusce posuere varius turpis et maximus. Suspendisse porta, mauris quis tempor fringilla, magna dui blandit libero, ut bibendum lectus quam id neque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec blandit ut sapien ut tincidunt. Donec id magna ante. Sed at aliquam mauris. Sed et vehicula sem, quis pretium massa.</p>
                             </CraftInfo>
                         </CraftBorder>
                     </div>

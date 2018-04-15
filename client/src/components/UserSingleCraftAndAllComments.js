@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Image, Button } from 'semantic-ui-react';
+import { Image, Button, Rating } from 'semantic-ui-react';
 import AllCraftComments from './AllCraftComments';
 import PostNewCraftComment from './PostNewCraftComment';
 import styled from 'styled-components';
@@ -69,7 +69,6 @@ class UserSingleCraftAndComments extends Component {
                 <CraftImage>
                     <img src={this.state.craft.photo_url} alt="" />
                 </CraftImage>
-
                 <PostNewCraftComment
                     userId={this.props.match.params.user_id}
                     craftId={this.props.match.params.id}
