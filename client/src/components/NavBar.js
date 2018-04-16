@@ -11,15 +11,28 @@ const NavStyle = styled.div`
   width: 100vw;
   padding: 0%;
   margin: 0px;
+  background: linear-gradient(to bottom right, #e2bc38, rgba(230,212,3,0.30));
 `
 const LandingTitle = styled.div`
 text-decoration: none;
+font-family: cursive;
 opacity: 0.95;
 font-size: 51px;
 color: #3D3300;
 text-align: left;
-
-`
+a:link {
+    color: #3D3300;
+    text-decoration-line: none;
+}
+a:visited {
+    color: #3D3300;
+}
+a:hover {
+    color: hotpink;
+}
+a:active {
+    color: #3D3300;
+}`
 
 const NavBar = () => {
   this.state = {

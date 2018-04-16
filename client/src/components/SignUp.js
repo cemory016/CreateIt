@@ -1,20 +1,35 @@
 import React, { Component } from 'react';
 import { Form, Button, Input } from 'semantic-ui-react'
 import axios from 'axios'
+import styled from 'styled-components'
+
+const SignUpForm = styled.div`
+    display: inline-block;
+    text-align: center;
+input{
+    width: 25vw;
+    height: 2vw;
+    background: rgb(218, 216, 219, 0.5)
+}
+background: rgb(218, 216, 219, 0.75);
+.button{
+    margin: 1vw;
+}
+`
 
 class SignUp extends Component {
-constructor(){
-    super();
-    this.state ={
-        newUser: {
-            firstName: '',
-            lastName: '',
-            email: '',
-            userName: '',
-            photo_url: ''
-          },
+    constructor() {
+        super();
+        this.state = {
+            newUser: {
+                firstName: '',
+                lastName: '',
+                email: '',
+                userName: '',
+                photo_url: ''
+            },
+        }
     }
-}
     handleChange = event => {
         const name = event.target.name
         const newUsers = { ...this.state.newUser }
@@ -34,8 +49,9 @@ constructor(){
 
     render() {
         return (
-            <div>
-                <h1>This is my Toggle signUp form!</h1>
+            <SignUpForm>
+                <h1>Sign Up here!</h1>
+                <h4>Start Crafting Today</h4>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Field>
                         <label>First Name</label>
@@ -60,7 +76,7 @@ constructor(){
                     <Button type='submit'>Submit</Button>
                     <Button onClick={this.props.toggleSignUp}>cancel</Button>
                 </Form>
-            </div>
+            </SignUpForm>
         )
     }
 }

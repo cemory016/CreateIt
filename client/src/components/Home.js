@@ -14,6 +14,7 @@ const LandingImage = styled.div`
   height: 100vh;
   width: 100vw;
   display: flex;
+  padding: 2vw;
 `;
 
 const HomeContainer = styled.div`
@@ -28,14 +29,33 @@ background-image: radial-gradient(19% 73%, #E1BE0D 0%, rgba(230,212,3,0.00) 79%)
 
 const LandingText = styled.div`
   font-size: 35px;
-  color: #3D3300;
+  color: #231F22;
   letter-spacing: 0;
   text-align: left;
   }`;
 
 const ButtonPadding = styled.div`
   margin: 5px;
+  align-items: right;
+  .button{
+    border: none;
+    color: #455C52;
+    background: #D0E3E0;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    color: #231F22;
+  }
+  a:link{
+    color: #455C52;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
   `;
+
 
 const BodyContent = styled.div`
   width: 75vw;
@@ -123,28 +143,23 @@ class Home extends Component {
                 to its family, and I said to myself, "I can't do it. <br /> I just
                 can't do it. It's inappropriate. It's not nice."
             </p>
-
               <ButtonPadding>
-
                 {this.state.button ? (<div><Button size='massive' primary onClick={this.toggleSignUp}>Sign Up!</Button></div>) : null}
 
                 {this.state.toggleSignUp ? (<SignUp
                   createNewUser={this.createNewUser} handleChange={this.handleChange} newUser={this.state.newUser}
                   toggleSignUp={this.toggleSignUp} />) : null}
-
-
-
               </ButtonPadding>
               <ButtonPadding>
-                <Button type="submit"><Link to="/users">Log In</Link></Button>
+                <Button size='massive' type="submit"><Link to="/users">Log In!</Link></Button>
               </ButtonPadding>
             </LandingText>
           </LandingImage>
-        
-        <BodyContent>
+
+          {/* <BodyContent>
           <h1>This is my body content</h1>
           <h4>put some stuff about crafting down here</h4>
-        </BodyContent>
+        </BodyContent> */}
         </YellowGrade>
       </HomeContainer>
     );
