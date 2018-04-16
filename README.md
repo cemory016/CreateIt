@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+https://github.com/cemory016/CreateIt
 
-Things you may want to cover:
+https://craftit.herokuapp.com/
 
-* Ruby version
+https://trello.com/b/M6XYMVUe/create-it
 
-* System dependencies
+https://www.figma.com/proto/0mgQqOCydLvzplqtktTDIIw5/Craft-It!?scaling=contain
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+https://www.figma.com/proto/0dc3wmSl6CdWtdQAenBJkneY/Carmen-Emory-app?node-id=0%3A10&scaling=contain
