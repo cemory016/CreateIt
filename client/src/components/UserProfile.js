@@ -17,6 +17,7 @@ const UserInfoContainer = styled.div`
 align-self: auto;
 text-align: center;
 width: 50vw;
+}
 `
 const RandomCraftArea = styled.div`
 display: flex;
@@ -37,6 +38,7 @@ align-content: center;
 img {
     width: auto;
     height: 250px;
+    align-content: center;
 }
 `
 
@@ -146,23 +148,15 @@ editUserProfile = async (e) => {
             <UserProfileContainer>
                 <BigBox>
                     <UserInfoContainer>
-                        <h4>I am a single user and this is my profile</h4>
                         <h1>{this.state.user.firstName} {this.state.user.lastName}</h1>
                         <img src={this.state.user.photo_url} alt="userImage" size="400vw 200vw" />
                         <h2>User Name: {this.state.user.userName}</h2>
                         <h2>Email: {this.state.user.email}</h2>
-                        <Button>Edit User Profile Info</Button>
-
-
                         {this.state.button ? (<div><Button size='large' primary onClick={this.toggleEditProfile}>Edit Profile</Button></div>) : null}
 
                         {this.state.toggleEditProfile ? (<EditUserProfile
                             User={this.editUserProfile} handleChange={this.handleChange} editUser={this.state.editUser}
                             toggleEditProfile={this.toggleEditProfile} />) : null}
-
-
-
-
 
                     </UserInfoContainer>
                     <RandomCraftArea>
@@ -170,9 +164,9 @@ editUserProfile = async (e) => {
                         <RandomCraftImage>
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs56Q00C_cYBjDKk8HpUpv-1uHUge-OxVYoYsptd3f9lk5LmC6" alt="randomCraft" size="50px 50px" />
                         </RandomCraftImage>
-                        <div><h3>title</h3></div>
+                        {/* <div><h3>title</h3></div>
                         <div><h4>Craft It!!</h4></div>
-                        <div><h4>Skip It!</h4></div>
+                        <div><h4>Skip It!</h4></div> */}
                     </RandomCraftArea>
                 </BigBox>
                 {this.state.crafts.map(craft => (

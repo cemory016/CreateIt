@@ -6,6 +6,22 @@ import styled from 'styled-components';
 const FormContainer = styled.div`
   width: 60vw;
   margin: 20px auto;
+  display: inline-block;
+    text-align: center;
+input{
+    width: 15vw;
+    height: 2vw;
+    background: rgb(218, 216, 219, 0.5)
+}
+textarea{
+    width: 25vw;
+    height: 2vw;
+    background: rgb(218, 216, 219, 0.5)
+}
+background: rgb(218, 216, 219, 0.75);
+.button{
+    margin: 1vw;
+}
 `;
 
 class EditCommentsForm extends Component {
@@ -46,9 +62,9 @@ this.setState({ commentId: commentUpdate})
             <FormContainer>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Field>
-                        <input placeholder={this.props} name="title" type="text" onChange={this.handleChange} />
+                        <input placeholder='Edit Title' name="title" type="text" onChange={this.handleChange} />
                     </Form.Field>
-                    <TextArea placeholder='Tell us more...' name="text" type="text" onChange={this.handleChange} />
+                    <TextArea placeholder='Edit Comment or Tell us more...' name="text" type="text" onChange={this.handleChange} />
                     <Button onSubmit={this.handleSubmit}
                     // onClick={this.props.toggleEditComment}
                     >Save Edits</Button>

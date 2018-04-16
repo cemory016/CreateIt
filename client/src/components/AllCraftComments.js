@@ -7,7 +7,6 @@ import styled from 'styled-components';
 
 const PageContainer = styled.div`
 background-color: #DAD8DB;
-background-size: 50% 50%;
 background-repeat: repeat;
 margin-bottom: 0vw;
 align-content: center;
@@ -78,7 +77,6 @@ class AllCraftComments extends Component {
         const craftId = this.props.craftId;
         const commentsId = this.props.comments_id
         await axios.delete(`/api/users/${this.props.userId}/crafts/${this.props.craftId}/comments/${id}`)
-        // this.props.history.push('/')
         await this.getCommentsData()
     };
     render() {
@@ -108,18 +106,10 @@ class AllCraftComments extends Component {
                                 userId={this.props.userId}
                                 craftId={this.props.craftId}
                                 getComment={this.getCommentsData}
-                                toggleSignUp={this.toggleEditComment} />) : null}
-
-
-                            {/* // <EditCommentsForm 
-                            //     // handleChange={this.handleChange}
-                            //     // handleSubmit=
-                            //     // {this.handleSubmit}
-                            //     commentId={comment.id}
-                            //     userId={this.props.userId}
-                            //     craftId={this.props.craftId}
-                            //     getComment={this.getCommentsData} />*/}
-
+                                toggleSignUp={this.toggleEditComment}
+                                 
+                                handleChange={this.handleChange}
+                                handleSubmit={this.handleSubmit}/>) : null}
 
                         </CraftBorder>
                     </div>
