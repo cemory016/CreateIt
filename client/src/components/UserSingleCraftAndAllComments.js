@@ -6,11 +6,21 @@ import AllCraftComments from './AllCraftComments';
 import PostNewCraftComment from './PostNewCraftComment';
 import styled from 'styled-components';
 
+const PageContainer = styled.div`
+background-color: #DAD8DB;
+background-size: 50% 50%;
+background-repeat: repeat;
+margin-bottom: 0vw;
+align-content: center;
+`
 const CraftImage = styled.div`
 display: flex;
 flex-wrap: wrap-reverse;
 border: solid black;
-`;
+`
+const NewCraftCommet = styled.div`
+text-align: center;
+`
 
 
 class UserSingleCraftAndComments extends Component {
@@ -18,6 +28,8 @@ class UserSingleCraftAndComments extends Component {
         super();
         this.state = {
             user: {},
+            toggleNewCommentForm: false,
+            button: true,
             craft: {
                 comments: []
             },
@@ -29,7 +41,9 @@ class UserSingleCraftAndComments extends Component {
         const craftId = this.props.match.params.id;
         this.getUserAndCraftsData(userId, craftId);
     }
-
+toggleNewCommentForm= () => {
+    this.setState({ toggleNewCommentForm: !this.state.toggleNewCommentForm})
+}
     getUserAndCraftsData = async (userId, craftId) => {
         try {
             const userResponse = await axios.get(`/api/users/${userId}`)
@@ -60,25 +74,28 @@ class UserSingleCraftAndComments extends Component {
 
         }
         return (
-            <div>
-                <h1>This is a Users Single Craft View</h1>
-                <h3>User will be able to edit and rate crafts from here</h3>
-                <h4>as well as link to the crafts directions</h4>
-                <br />
-                <h4>{this.state.craft.title}</h4>
+            <PageContainer>
+                <h2>{this.state.craft.title}</h2>
                 <CraftImage>
                     <img src={this.state.craft.photo_url} alt="" />
                 </CraftImage>
-                <PostNewCraftComment
+                <NewCraftCommet>
+
+                    {this.state.button ? (<div><Button size='massive' primary onClick={this.toggleNewCommentForm}>New Comment</Button></div>) :null}
+
+                    {this.state.toggleNewCommentForm ? (<PostNewCraftComment
                     userId={this.props.match.params.user_id}
                     craftId={this.props.match.params.id}
                     getComment={this.getUserAndCraftsData}
-                />
+                    toggleNewCommentForm ={this.toggleNewCommentForm}
+                />) : null}
+                
+                </NewCraftCommet>
                 <AllCraftComments
                     userId={this.props.match.params.user_id}
                     craftId={this.props.match.params.id}
                 />
-            </div>
+            </PageContainer>
 
         );
 

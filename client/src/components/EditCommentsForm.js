@@ -52,6 +52,7 @@ this.setState({ commentId: commentUpdate})
                     <Button onSubmit={this.handleSubmit}
                     // onClick={this.props.toggleEditComment}
                     >Save Edits</Button>
+                    <Button onClick={this.props.toggleSignUp}>cancel</Button>
 
                 </Form>
             </FormContainer>

@@ -5,11 +5,28 @@ import EditCommentsForm from './EditCommentsForm';
 import { Image, Button, Card, Form, Input, TextArea } from 'semantic-ui-react';
 import styled from 'styled-components';
 
+const PageContainer = styled.div`
+background-color: #DAD8DB;
+background-size: 50% 50%;
+background-repeat: repeat;
+margin-bottom: 0vw;
+align-content: center;
+h1{
+    text-align: center;
+}
+h2{
+    text-align: center;
+}
+p{
+    text-align: center;
+}
+`
 const CraftBorder = styled.div`
-border: solid red;
+/* border: solid red; */
 border-radius: 70px 20px;
-padding: 1em;
+padding: 3em;
 margin: 2vw;
+margin-bottom: 0px;
 background-color: rgb(128, 128, 128, .3);
 `;
 
@@ -74,7 +91,7 @@ class AllCraftComments extends Component {
         }
 
         return (
-            <div>
+            <PageContainer>
                 <h1>Craft Comments</h1>
 
                 {this.state.comments.map(comment => (
@@ -107,7 +124,7 @@ class AllCraftComments extends Component {
                         </CraftBorder>
                     </div>
                 ))}
-            </div>
+            </PageContainer>
         );
     }
 }

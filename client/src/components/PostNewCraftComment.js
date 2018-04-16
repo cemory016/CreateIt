@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import { Form, TextArea, Button } from 'semantic-ui-react'
 import axios from 'axios'
+import styled from 'styled-components'
+
+const CraftConainer = styled.div`
+background-color: #DAD8DB;
+background-size: 50% 50%;
+background-repeat: repeat;
+margin-bottom: 0vw;
+align-content: center;
+`
 
 class PostNewCraftComment extends Component {
     constructor() {
@@ -29,12 +38,12 @@ class PostNewCraftComment extends Component {
         const commentUpdate = { ...this.state.comment }
         await axios.post(`/api/users/${userId}/crafts/${craftId}/comments`, commentUpdate)
         await this.props.getComment(userId, craftId)
+        this.props.toggleNewCommentForm()
     }
 
     render() {
         return (
-            <div>
-                {/* add on toggle to pull up form */}
+            <CraftConainer>
                  <Button>New Comment</Button>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Field>
@@ -42,8 +51,9 @@ class PostNewCraftComment extends Component {
                     </Form.Field>
                     <TextArea placeholder='Tell us more...' name="text" type="text" onChange={this.handleChange} />
                     <Button onSubmit={this.handleSubmit}>Submit</Button>
+                    <Button onClick={this.props.toggleNewCommentForm}>cancel</Button>
                 </Form>
-            </div>
+            </CraftConainer>
         );
     }
 }
