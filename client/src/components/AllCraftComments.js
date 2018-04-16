@@ -19,8 +19,7 @@ class AllCraftComments extends Component {
         this.state = {
             user: {},
             craft: {},
-            comments: [
-            ],
+            comments: [],
             toggleEditComment: false,
             button: true,
         };

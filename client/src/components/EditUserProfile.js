@@ -7,7 +7,8 @@ class EditUserProfile extends Component {
     constructor() {
         super();
         this.state = {
-            editUser: {
+            users: [],
+            user: {
                 firstName: '',
                 lastName: '',
                 email: '',
@@ -18,23 +19,36 @@ class EditUserProfile extends Component {
     }
 
     handleChange = event => {
-        const name = event.target.name
-        const editProfile = { ...this.state.editUser }
-        editProfile[name] = event.target.value
-        this.setState({ editUser: editProfile })
-        console.log(this.state)
+        const user = event.target.name
+        const editProfile = { ...this.state.user }
+        editProfile[user] = event.target.value
+        this.setState({ user: editProfile })
+        console.log(user)
     };
 
     handleSubmit = async event => {
         event.preventDefault()
-        const payload = this.state.editUser
-        const response = await axios.patch(`/api/users/`, payload)
-        const users = [...this.state.editUser, response.data]
-        this.setState({ editUser: users })
+        const payload = this.state.user
+        const userId = this.props.userId
+        const response = await axios.patch(`/api/users/${userId}`, payload)
+        const users = [...this.state.user, response.data]
+        this.setState({ user: users })
         this.props.toggleEditProfile()
+
+        // const userId = this.props.userId;
+        // console.log(userId)
+        // const userUpdate = {...this.state.userId}
+        // await axios.patch(`/api/users/${userId}`, userUpdate)
+        // await this.props.getUser(userId)
+        // this.setState({userId: userUpdate})
+        // this.props.toggleEditProfile()
+
     }
 
     render() {
+        if (this.state.error) {
+            return <div>{this.state.error}</div>
+        };
         return (
             <div>
                 <Form onSubmit={this.handleSubmit}>

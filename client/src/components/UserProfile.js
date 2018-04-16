@@ -78,13 +78,6 @@ class UserProfile extends Component {
         super();
         this.state = {
             user: {},
-            editUser: {
-                firstName: '',
-                lastName: '',
-                email: '',
-                userName: '',
-                photo_url: ''
-              },
             crafts: [],
             comments: [],
             toggleEditProfile: false,
@@ -120,9 +113,14 @@ class UserProfile extends Component {
         }
 
     }
+    toggleEditProfile = () => {
+        this.setState({ toggleEditProfile: !this.state.toggleEditProfile})
+    }
+
 editUserProfile = async (e) => {
     e.preventDefault()
-    const response = await axios.patch('api/users/${userId}', this.state.editUser)
+    const userId = this.props.userId;
+    const response = await axios.patch(`api/users/${user.Id}`, this.state.editUser)
     const user = [...this.state.user, response.data]
     this.setState({
         user,
@@ -137,6 +135,8 @@ editUserProfile = async (e) => {
 }
     render() {
         const userId = this.props.match.params.id;
+        //this is getting passed into the toggle form, but I can't figure out how to pass it to my submit!!!
+
         if (this.state.error) {
             return <div>{this.state.error}</div>
 
