@@ -1,41 +1,42 @@
 import React, { Component } from 'react';
-import { Form, Button, Input } from 'semantic-ui-react'
-import axios from 'axios'
+import { Form, TextArea, Button } from 'semantic-ui-react';
+import axios from 'axios';
+import styled from 'styled-components';
 
-class SignUp extends Component {
-constructor(){
-    super();
-    this.state ={
-        newUser: {
-            firstName: '',
-            lastName: '',
-            email: '',
-            userName: '',
-            photo_url: ''
-          },
+class EditUserProfile extends Component {
+    constructor() {
+        super();
+        this.state = {
+            editUser: {
+                firstName: '',
+                lastName: '',
+                email: '',
+                userName: '',
+                photo_url: ''
+            },
+        }
     }
-}
+
     handleChange = event => {
         const name = event.target.name
-        const newUsers = { ...this.state.newUser }
-        newUsers[name] = event.target.value
-        this.setState({ newUser: newUsers })
+        const editProfile = { ...this.state.editUser }
+        editProfile[name] = event.target.value
+        this.setState({ editUser: editProfile })
         console.log(this.state)
     };
 
     handleSubmit = async event => {
         event.preventDefault()
-        const payload = this.state.newUser
-        const response = await axios.post(`/api/users/`, payload)
-        const users = [...this.state.newUser, response.data]
-        this.setState({ newUser: users })
-        this.props.toggleSignUp()
+        const payload = this.state.editUser
+        const response = await axios.patch(`/api/users/`, payload)
+        const users = [...this.state.editUser, response.data]
+        this.setState({ editUser: users })
+        this.props.toggleEditProfile()
     }
 
     render() {
         return (
             <div>
-                <h1>This is my Toggle signUp form!</h1>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Field>
                         <label>First Name</label>
@@ -58,11 +59,10 @@ constructor(){
                         <input placeholder='Photo Url' name="photo_url" onChange={this.handleChange} value={this.state.photo_url} />
                     </Form.Field>
                     <Button type='submit'>Submit</Button>
-                    <Button onClick={this.props.toggleSignUp}>cancel</Button>
+                    <Button onClick={this.props.toggleEditProfile}>cancel</Button>
                 </Form>
             </div>
-        )
+        );
     }
 }
-
-export default SignUp
+export default EditUserProfile

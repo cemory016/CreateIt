@@ -8,6 +8,7 @@ import UserProfile from "./components/UserProfile";
 import SignUp from './components/SignUp';
 import AllCraftComments from "./components/AllCraftComments";
 import LoginForm from "./components/LogInForm";
+import AllCrafts from "./components/AllCrafts";
 import "./App.css";
 
 
@@ -24,6 +25,7 @@ class App extends Component {
                   <Route exact path="/users" component={AllUserList}/>
                   <Route exact path="/users/:id" component={UserProfile}/>
                   <Route exact path="/users/:user_id/crafts/:id" component={UserSingleCraftAndAllComments}/>
+                  <Route exact path="/crafts" component={AllCrafts} />
                 </Switch>
                 </div>
             </Router>

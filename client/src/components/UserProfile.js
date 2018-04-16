@@ -3,12 +3,12 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 import { Image, Button } from 'semantic-ui-react'
 import styled from 'styled-components'
+import EditUserProfile from './EditUserProfile';
 
 const UserProfileContainer = styled.div`
-background-image: url("https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8b5d177ad38580e039c7f403c0554ea6&auto=format&fit=crop&w=1567&q=80");
+background-color: #DAD8DB;
 background-size: 50% 50%;
 background-repeat: repeat;
-margin: 3vw;
 margin-bottom: 0vw;
 align-content: center;
 `
@@ -78,9 +78,17 @@ class UserProfile extends Component {
         super();
         this.state = {
             user: {},
+            editUser: {
+                firstName: '',
+                lastName: '',
+                email: '',
+                userName: '',
+                photo_url: ''
+              },
             crafts: [],
             comments: [],
-
+            toggleEditProfile: false,
+            button: true,
         };
     }
 
@@ -112,7 +120,21 @@ class UserProfile extends Component {
         }
 
     }
-
+editUserProfile = async (e) => {
+    e.preventDefault()
+    const response = await axios.patch('api/users/${userId}', this.state.editUser)
+    const user = [...this.state.user, response.data]
+    this.setState({
+        user,
+        editUser: {
+            firstName: '',
+            lastName: '',
+            email: '',
+            userName: '',
+            photo_url: ''
+          },
+    }) 
+}
     render() {
         const userId = this.props.match.params.id;
         if (this.state.error) {
@@ -130,6 +152,18 @@ class UserProfile extends Component {
                         <h2>User Name: {this.state.user.userName}</h2>
                         <h2>Email: {this.state.user.email}</h2>
                         <Button>Edit User Profile Info</Button>
+
+
+                        {this.state.button ? (<div><Button size='large' primary onClick={this.toggleEditProfile}>Edit Profile</Button></div>) : null}
+
+                        {this.state.toggleEditProfile ? (<EditUserProfile
+                            User={this.editUserProfile} handleChange={this.handleChange} editUser={this.state.editUser}
+                            toggleEditProfile={this.toggleEditProfile} />) : null}
+
+
+
+
+
                     </UserInfoContainer>
                     <RandomCraftArea>
                         <h2>Work on getting a randomly generated craft to populate here</h2>
